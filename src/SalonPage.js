@@ -1,3 +1,4 @@
+
 import AppointmentForm from './AppointmentForm'
 
 function SalonPage() {
