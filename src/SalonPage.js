@@ -1,20 +1,32 @@
 
 import AppointmentForm from './AppointmentForm'
 
-function SalonPage() {
+function SalonPage({salon}) {
+    console.log(salon)
+    // let services = salon.services
+    // console.log(services)
+    // let serviceDisplay = services.map(service => {
+    //     return (
+    //         <li>service: {service.name}</li>
+    //         // <li>Price: ${service.price}</li>
+    //     )
+    // })
+
+    // const salonServices = salon.services.map(service => {
+    //     return (
+    //         <li>service</li>
+    //     )
+    // })
 
     return (
         <>
-        {/* Page with salon services and prices */}
-        <h1>Salon Name:</h1>
-        {/* customer image carousel */}
-        <ol>
-            <li>
-                Wash and Set: $20
-
-            </li>
-        </ol>
-        <AppointmentForm />
+            {/* Page with salon services and prices */}
+            <h1>{salon.name}</h1>
+            {/* customer image carousel */}
+            <ul>
+                {/* {salonServices} */}
+            </ul>
+            <AppointmentForm />
         </>
     )
 }

@@ -1,19 +1,15 @@
 import SalonSearchCard from './SalonSearchCard'
 
 
-function SalonDisplay({salonList, history}) {
+function SalonDisplay({setSalon, salonList, history}) {
     const salonSearch = salonList.map(salon => {
-        return <SalonSearchCard salon={salon}/>
+        return <SalonSearchCard key={salon.id} salon={salon} history={history} setSalon={setSalon}/>
     })
-
-    // function handleClick(){
-    //     history.push('/salon-info')
-    // }
 
 
     return (
         <>
-            <div className="salon-card" onClick={() => history.push('/salon-info')}>
+            <div className="salon-card" >
                 {salonSearch}
             </div>
         </>

@@ -11,6 +11,7 @@ import SalonPage from './SalonPage'
 
 function MainContent() {
     const [salons, setSalons] = useState([])
+    const [salon, setSalon] = useState([])
     const [searchTerm, setSearchTerm] = useState("")
   
     let history = useHistory()
@@ -48,10 +49,10 @@ function MainContent() {
                     <MyAppointments />
                 </Route>
                 <Route path="/salons">
-                    <SalonDisplay salonList={filteredSalons} history={history} />
+                    <SalonDisplay setSalon={setSalon} salonList={filteredSalons} history={history} />
                 </Route>
                 <Route path="/salon-info">
-                    <SalonPage />
+                    <SalonPage salon={salon} />
                 </Route>
                 <Route path="/login">
                     <LogIn />

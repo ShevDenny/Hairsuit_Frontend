@@ -12,7 +12,7 @@ function Search({searchTerm, setSearchTerm, handleSearch}){
     return (
         <div className="search">
             <form className="search-form" onSubmit={handleSearch}>
-                <input type="text" className="search-input" placeholder="Search..." value={searchTerm} onChange={handleChange}/>
+                <input required type="text" className="search-input" placeholder="Search..." value={searchTerm} onChange={handleChange}/>
                 <input type="submit" value="Search"/>
             </form>
         </div>
