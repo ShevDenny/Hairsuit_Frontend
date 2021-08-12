@@ -4,7 +4,11 @@ import 'react-calendar/dist/Calendar.css'
 
 
 
-function AppointmentForm() {
+function AppointmentForm({appointments, setAppointments}) {
+    const[date, setDate] = useState('')
+    const[time, setTime] = useState('')
+    const[description, setDescription] = useState('')
+   
 
     // const ReactCalendar = () => {
     //     const [date, setDate] = useState(new Date());
@@ -21,16 +25,35 @@ function AppointmentForm() {
     //     )
     //   }
 
+    function handleSubmit(e){
+        e.preventDefault()
+        let new_appointment = {
+            date,
+            start_time: time,
+            description
+        }
+        fetch(`http://localhost:3000/appointments`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'  
+            },
+            body: JSON.stringify(new_appointment)
+        })
+        .then(res => res.json())
+        .then(apptData => setAppointments([...appointments, apptData])) 
+    }
+
+
       
       
     return (
 
         <div className="appointment">
             {/* <ReactCalendar /> */}
-            <form className="appt-form">
-                <input type="date" placeholder="Select a date" />
-                <input type="time" placeholder="time" />
-                <input type="text" placeholder="reason for visit" />
+            <form className="appt-form" onSubmit={handleSubmit}>
+                <input type="date" placeholder="Select a date" value={date} onChange={(e) => setDate(e.target.value)} />
+                <input type="time" placeholder="time" value={time} onChange={(e) => setTime(e.target.value)}/>
+                <input type="text" placeholder="reason for visit" value={description} onChange={(e) => setDescription(e.target.value)}/>
                 <input type="submit" value="Book Now"/>
             </form>
         </div>

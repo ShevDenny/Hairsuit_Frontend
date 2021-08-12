@@ -13,6 +13,7 @@ function MainContent() {
     const [salons, setSalons] = useState([])
     const [salon, setSalon] = useState([])
     const [searchTerm, setSearchTerm] = useState("")
+    const[appointments,setAppointments] = useState([])
   
     let history = useHistory()
   
@@ -21,6 +22,14 @@ function MainContent() {
         .then(res => res.json())
         .then(salonData => setSalons(salonData))
     },[])
+
+    useEffect(() => {
+        fetch(`http://localhost:3000/appointments`)
+        .then(res => res.json())
+        .then(appointmentData => setAppointments(appointmentData))
+    },[])
+
+
   
     function handleSearch(e) {
         e.preventDefault();
@@ -46,13 +55,13 @@ function MainContent() {
                     <HomePage salons={salons} setSalons={setSalons} setSearchTerm={setSearchTerm} searchTerm={searchTerm} handleSearch={handleSearch} />
                 </Route>                
                 <Route path="/my-appts">
-                    <MyAppointments />
+                    <MyAppointments appointments={appointments} />
                 </Route>
                 <Route path="/salons">
                     <SalonDisplay setSalon={setSalon} salonList={filteredSalons} history={history} />
                 </Route>
                 <Route path="/salon-info">
-                    <SalonPage salon={salon} />
+                    <SalonPage salon={salon} appointments={appointments} setAppointments={setAppointments} />
                 </Route>
                 <Route path="/login">
                     <LogIn />
