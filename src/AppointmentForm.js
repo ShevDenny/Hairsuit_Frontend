@@ -27,20 +27,34 @@ function AppointmentForm({appointments, setAppointments}) {
 
     function handleSubmit(e){
         e.preventDefault()
-        let new_appointment = {
+        console.log("form data")
+        let newAppointment = {
             date,
             start_time: time,
             description
         }
-        fetch(`http://localhost:3000/appointments`, {
+        fetch('https://example.com/profile', {
             method: 'POST',
             headers: {
-              'Content-Type': 'application/json'  
+                "Access-Control-Allow-Origin": "*",
+                'Content-Type': 'application/json',
             },
-            body: JSON.stringify(new_appointment)
-        })
-        .then(res => res.json())
-        .then(apptData => setAppointments([...appointments, apptData])) 
+            body: JSON.stringify(newAppointment),
+            })
+            .then(response => response.json())
+            .then(data => {
+            console.log('Success:', data);
+            })
+ 
+        // fetch(`http://localhost:3000/appointments`, {
+        //     method: 'POST',
+        //     headers: {
+        //       'Content-Type': 'application/json'  
+        //     },
+        //     body: JSON.stringify(new_appointment)
+        // })
+        // .then(res => res.json())
+        // .then(apptData => setAppointments([...appointments, apptData])) 
     }
 
 
