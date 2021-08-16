@@ -1,4 +1,4 @@
-
+import React from "react"
 
 function SalonSearchCard({salon, history,setSalon}){
 

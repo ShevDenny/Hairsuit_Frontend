@@ -1,15 +1,36 @@
 import './App.css';
+import React, {useState, useEffect} from 'react'
+import { useHistory } from 'react-router-dom'
 import NavBar from './NavBar'
 import MainContent from './MainContent'
 
+import LogIn from './LogIn'
+
+
+
+
+
 
 function App() {
+  const[user, setUser] = useState(null)
+
+  let history = useHistory()
+
+  // useEffect(() => {
+  //   fetch('http://localhost:3000/me')
+  //   .then(res => res.json())
+  //   .then(userData => setUser(userData))
+
+  // },[])
+
+  if(!user) return <LogIn user={user} setUser={setUser} history={history}/>
 
 
   return (
     <div className="App">
-      <NavBar />
-      <MainContent />
+      <NavBar user={user} setUser={setUser}/>
+      <MainContent user={user} setUser={setUser} history={history}/>
+      
     </div>
   );
 }

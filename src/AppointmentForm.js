@@ -1,60 +1,47 @@
 import Calendar from 'react-calendar';
-import {useState} from 'react'
+import React, {useState} from 'react'
 import 'react-calendar/dist/Calendar.css'
+import TextField from '@material-ui/core/TextField'
 
 
 
-function AppointmentForm({appointments, setAppointments}) {
+function AppointmentForm({appointments, setAppointments, salon, history}) {
     const[date, setDate] = useState('')
+    const[endTime, setEndTime] = useState('')
     const[time, setTime] = useState('')
     const[description, setDescription] = useState('')
    
 
-    // const ReactCalendar = () => {
-    //     const [date, setDate] = useState(new Date());
+    async function handleSubmit(e){
+        e.preventDefault();
         
-    //     const onChange = (date) => {
-    //         setDate(date)
-    //     }
-      
-    //     return (
-    //         <div> 
-    //             <Calendar onChange={onChange} value={date} /> 
-                
-    //         </div>
-    //     )
-    //   }
-
-    function handleSubmit(e){
-        e.preventDefault()
-        console.log("form data")
-        let newAppointment = {
-            date,
+        const newAppointment = {
+            date: date,
             start_time: time,
-            description
-        }
-        fetch('https://example.com/profile', {
+            description,
+            user_id: 1,
+            salon_id: salon.id
+        };
+        console.log(newAppointment)
+        const res = await fetch(`http://localhost:3000/appointments`, {
             method: 'POST',
             headers: {
-                "Access-Control-Allow-Origin": "*",
-                'Content-Type': 'application/json',
+              'Content-Type': 'application/json'  
             },
-            body: JSON.stringify(newAppointment),
-            })
-            .then(response => response.json())
-            .then(data => {
-            console.log('Success:', data);
-            })
- 
-        // fetch(`http://localhost:3000/appointments`, {
-        //     method: 'POST',
-        //     headers: {
-        //       'Content-Type': 'application/json'  
-        //     },
-        //     body: JSON.stringify(new_appointment)
-        // })
-        // .then(res => res.json())
-        // .then(apptData => setAppointments([...appointments, apptData])) 
+            body: JSON.stringify(newAppointment)
+        });
+        if (res.ok) {
+            console.log(res)
+
+            const json = await res.json();
+            setAppointments([...appointments, json]);
+            alert("Appointment booked!")
+            history.push(`/my-appointments`)
+        } else {
+            const errors = await res.json();
+            console.log(errors.errors)
+        }
+      
     }
 
 
@@ -64,14 +51,56 @@ function AppointmentForm({appointments, setAppointments}) {
 
         <div className="appointment">
             {/* <ReactCalendar /> */}
-            <form className="appt-form" onSubmit={handleSubmit}>
-                <input type="date" placeholder="Select a date" value={date} onChange={(e) => setDate(e.target.value)} />
-                <input type="time" placeholder="time" value={time} onChange={(e) => setTime(e.target.value)}/>
-                <input type="text" placeholder="reason for visit" value={description} onChange={(e) => setDescription(e.target.value)}/>
-                <input type="submit" value="Book Now"/>
+            <form className="" noValidate onSubmit={handleSubmit}>
+                <TextField
+                    id="date"
+                    label="Appointment Date"
+                    type="date"
+                    defaultValue="2017-05-24"
+                    className=""
+                    required
+                    InputLabelProps={{
+                    shrink: true,
+                    }}
+                    value={date} 
+                    onChange={(e) => setDate(e.target.value)}
+                    
+                />
+                <TextField
+                    id="time"
+                    label="Appointment Time"
+                    type="time"
+                    defaultValue="07:30"
+                    className=""
+                    required
+                    InputLabelProps={{
+                    shrink: true,
+                    }}
+                    inputProps={{
+                    step: 300,
+                    }}
+                    value={time} 
+                    onChange={(e) => setTime(e.target.value)}
+                />
+                <TextField
+                    id="desc"
+                    label="Reason for Visit"
+                    type="text"
+                    className=""
+                    required
+                    InputLabelProps={{
+                    shrink: true,
+                    }}
+                    value={description} 
+                    onChange={(e) => setDescription(e.target.value)}
+                />
+
             </form>
+     
         </div>
     )
 }
+
+
 
 export default AppointmentForm;

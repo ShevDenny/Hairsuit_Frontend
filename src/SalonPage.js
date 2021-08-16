@@ -1,7 +1,8 @@
-
+import React from 'react'
 import AppointmentForm from './AppointmentForm'
+import ReviewForm from './ReviewForm'
 
-function SalonPage({salon, appointments,setAppointments}) {
+function SalonPage({salon, appointments,setAppointments, history}) {
     console.log(salon)
     let services = salon.services
     console.log(services)
@@ -29,7 +30,8 @@ function SalonPage({salon, appointments,setAppointments}) {
             <ul>
                 {/* {serviceList} */}
             </ul>
-            <AppointmentForm appointments={appointments} setAppointments={setAppointments}/>
+            <AppointmentForm history={history} salon={salon} appointments={appointments} setAppointments={setAppointments}/>
+            <ReviewForm />
         </>
     )
 }
