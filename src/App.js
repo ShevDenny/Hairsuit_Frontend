@@ -15,13 +15,12 @@ function App() {
   const[user, setUser] = useState(null)
 
   let history = useHistory()
+  useEffect(() => {
+    const onlineUser = localStorage.getItem("user")
+        if(onlineUser){
+        setUser(JSON.parse(onlineUser))}
+  },[])
 
-  // useEffect(() => {
-  //   fetch('http://localhost:3000/me')
-  //   .then(res => res.json())
-  //   .then(userData => setUser(userData))
-
-  // },[])
 
   if(!user) return <LogIn user={user} setUser={setUser} history={history}/>
 

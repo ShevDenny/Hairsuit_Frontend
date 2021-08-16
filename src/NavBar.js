@@ -18,7 +18,7 @@ function NavBar({user, setUser}) {
     return (
         <div className="nav-bar">
             {/* <h2 className="name">Welcome {user.name}!</h2>            */}
-            <NavLink to="/">
+            <NavLink to="/home">
                 Home
             </NavLink>
             <NavLink to="/my-appointments">

@@ -20,11 +20,12 @@ function SignUp({user, setUser, history}) {
             email: formData.email,
             admin: false
         }
-    
+
+        
         fetch(`http://localhost:3000/signup`, {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
           },
           body: JSON.stringify({user})
         })
@@ -34,7 +35,10 @@ function SignUp({user, setUser, history}) {
                 setErrors(userData.errors)
 
             } else {
-                setUser(userData)
+                const{user, token}= userData
+                localStorage.setItem("token", token)
+                // localStorage.setItem("user", JSON.stringify(user))
+                setUser(user)
                 history.push('/home')
             }
         })

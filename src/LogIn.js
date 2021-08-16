@@ -6,7 +6,7 @@ function Login({setUser, history}) {
         username: '',
         password: ''
     })
-    const[errors, setErrors] = useState(null)
+    const[errors, setErrors] = useState([])
     const[signUp, setSignUp] = useState(false)
 
     function handleSubmit(e){
@@ -15,24 +15,27 @@ function Login({setUser, history}) {
           user_name: formData.username,
           password: formData.password
         }
-    
+
         fetch(`http://localhost:3000/login`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({user})
+          body: JSON.stringify({user}),
         })
-        .then(res => res.json())
-        .then(userData => {
-            if (userData.errors) {
-                setErrors(userData.errors)
-
-            } else {
-                setUser(userData)
-                history.push('/home')
-            }
+        .then((res) => res.json())
+        .then((data) => {
+            if(data.errors) {
+              setErrors(data.errors);
+          } else {
+            const {user, token} = data;
+            localStorage.setItem("token", token)
+            localStorage.setItem("user", JSON.stringify(user))
+            setUser(user)
+            history.push('/home')
+          }
         })
+                    
       }
 
       function handleChange(e) {
@@ -55,14 +58,16 @@ function Login({setUser, history}) {
                     placeholder="Username" 
                     value={formData.username} 
                     name="username" 
-                    onChange={handleChange} 
+                    onChange={handleChange}
+                    required 
                 />
                 <input 
                     type="password" 
                     placeholder="Password" 
                     value={formData.password} 
                     name="password" 
-                    onChange={handleChange} 
+                    onChange={handleChange}
+                    required 
                 />
                 {errors ? errors.map(error => <div>{error}</div>) : null}
                 <button type="submit" value="Login">Login</button>

@@ -13,6 +13,9 @@ function MainContent({user, setUser, history}) {
     const [salon, setSalon] = useState([])
     const [searchTerm, setSearchTerm] = useState("")
     const[appointments,setAppointments] = useState([])
+
+
+    
    
 
   
@@ -62,7 +65,7 @@ function MainContent({user, setUser, history}) {
             <Switch>
                 
                 <Route exact path="/home">
-                    <HomePage salons={salons} setSalons={setSalons} setSearchTerm={setSearchTerm} searchTerm={searchTerm} handleSearch={handleSearch} />
+                    <HomePage setUser={setUser} salons={salons} setSalons={setSalons} setSearchTerm={setSearchTerm} searchTerm={searchTerm} handleSearch={handleSearch} />
                 </Route>                
                 <Route path="/my-appointments">
                     <MyAppointments appointments={appointments} setAppointments={setAppointments} />
