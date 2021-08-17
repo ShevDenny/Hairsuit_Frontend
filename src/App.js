@@ -27,9 +27,12 @@ function App() {
 
   return (
     <div className="App">
-      <NavBar user={user} setUser={setUser}/>
-      <MainContent user={user} setUser={setUser} history={history}/>
       
+      <>
+      <NavBar user={user} setUser={setUser} history={history} />
+      <MainContent user={user} setUser={setUser} history={history}/>
+      </>
+     
     </div>
   );
 }

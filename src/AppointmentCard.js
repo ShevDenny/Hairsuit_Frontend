@@ -3,7 +3,7 @@ import React from "react"
 export default function  AppointmentCard({appointment, appointments, setAppointments}){
 
     console.log(appointment.salon)
-    console.log(appointments.salon)
+    
 
 
 

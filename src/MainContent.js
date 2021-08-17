@@ -10,13 +10,11 @@ import SalonPage from './SalonPage'
 
 function MainContent({user, setUser, history}) {
     const [salons, setSalons] = useState([])
-    const [salon, setSalon] = useState([])
+    const [salon, setSalon] = useState({})
     const [searchTerm, setSearchTerm] = useState("")
     const[appointments,setAppointments] = useState([])
 
-
-    
-   
+    console.log(salon)
 
   
     useEffect(() => {
@@ -33,19 +31,14 @@ function MainContent({user, setUser, history}) {
 
     console.log(appointments)
 
-    // useEffect(() => {
-    //     fetch(`http://localhost:3000/users`)
-    //     .then(res => res.json())
-    //     .then(userData => setUser(userData))
-    // },[])
 
-    // console.log(user)
 
 
   
     function handleSearch(e) {
         e.preventDefault();
-        console.log(searchTerm)
+        // console.log(searchTerm)
+        // setSearchTerm(e.target.value)
         history.push('/salons')
     }
   
@@ -74,7 +67,7 @@ function MainContent({user, setUser, history}) {
                     <SalonDisplay setSalon={setSalon} salonList={filteredSalons} history={history} />
                 </Route>
                 <Route path="/salon-info">
-                    <SalonPage history={history} salon={salon} appointments={appointments} setAppointments={setAppointments} />
+                    <SalonPage user={user} history={history} salon={salon} appointments={appointments} setAppointments={setAppointments} />
                 </Route>              
             </Switch>        
         </>

@@ -5,7 +5,7 @@ import TextField from '@material-ui/core/TextField'
 
 
 
-function AppointmentForm({appointments, setAppointments, salon, history}) {
+function AppointmentForm({appointments, setAppointments, salon, history, user}) {
     const[date, setDate] = useState('')
     const[endTime, setEndTime] = useState('')
     const[time, setTime] = useState('')
@@ -19,7 +19,7 @@ function AppointmentForm({appointments, setAppointments, salon, history}) {
             date: date,
             start_time: time,
             description,
-            user_id: 1,
+            user_id: user.id,
             salon_id: salon.id
         };
         console.log(newAppointment)
@@ -56,7 +56,7 @@ function AppointmentForm({appointments, setAppointments, salon, history}) {
                     id="date"
                     label="Appointment Date"
                     type="date"
-                    defaultValue="2017-05-24"
+                    // defaultValue="2017-05-24"
                     className=""
                     required
                     InputLabelProps={{
@@ -70,7 +70,7 @@ function AppointmentForm({appointments, setAppointments, salon, history}) {
                     id="time"
                     label="Appointment Time"
                     type="time"
-                    defaultValue="07:30"
+                    // defaultValue="07:30"
                     className=""
                     required
                     InputLabelProps={{

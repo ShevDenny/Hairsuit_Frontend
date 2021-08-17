@@ -1,6 +1,6 @@
 import {NavLink} from 'react-router-dom'
 
-function NavBar({user, setUser}) {
+function NavBar({user, setUser, history}) {
     function handleLogOut(){
         // async function logout(){
         //   const res = await fetch('/logout', {method: 'DELETE'})
@@ -9,15 +9,17 @@ function NavBar({user, setUser}) {
         //   }
         // }
         // logout()
-        localStorage.removeItem("user_id")
+        localStorage.removeItem("user")
+        localStorage.removeItem("token")
         setUser(null)
         alert("See you soon!")
+        history.push('/')
       }
 
 
     return (
         <div className="nav-bar">
-            {/* <h2 className="name">Welcome {user.name}!</h2>            */}
+            <h2 className="name">Welcome {user.name}!</h2>           
             <NavLink to="/home">
                 Home
             </NavLink>
