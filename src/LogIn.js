@@ -15,7 +15,7 @@ function Login({setUser, history}) {
           user_name: formData.username,
           password: formData.password
         }
-
+        
         fetch(`http://localhost:3000/login`, {
           method: 'POST',
           headers: {
@@ -30,7 +30,6 @@ function Login({setUser, history}) {
           } else {
             const {user, token} = data;
             localStorage.setItem("token", token)
-            localStorage.setItem("user", JSON.stringify(user))
             setUser(user)
             history.push('/home')
           }

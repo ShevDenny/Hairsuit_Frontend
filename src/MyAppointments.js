@@ -1,5 +1,5 @@
 import AppointmentCard from "./AppointmentCard";
-import React, {useState, useEffect} from 'react'
+
 
 function MyAppointments({appointments, setAppointments, user}) {
    

@@ -1,25 +1,66 @@
-import React from "react"
+import React, {useEffect} from "react"
 
-function SalonSearchCard({salon, history,setSalon}){
 
-    function handleClick(){
-        console.log(salon.id)
-        let id = salon.id
-        fetch(`http://localhost:3000/salons/${id}`)
-        .then(res => res.json())
-        .then(console.log)
-        .then(salonData => setSalon(salonData))
-        history.push('/salon-info')
+function SalonSearchCard({salon, history, setSalonInfo}){
+
+    function handleClick(){        
+        
+            console.log(salon.id)
+            let id = salon.id
+            fetch(`http://localhost:3000/salons/${id}`)
+            .then(res => res.json())
+            .then(salonData => {
+                console.log(salonData)
+                setSalonInfo(salonData)
+                history.push('/salon-info')        
+            })
     }
   
 
 
     return (
-        <div onClick={handleClick} >
-            <h2>Salon Name:{salon.name}</h2>
-            <img src={salon.image} alt={salon.name} width="300" height="450"/>
-            <p>Salon Locatiion:{salon.location}</p>
+        
+       
+
+
+
+        <div className="ui special cards">
+        <div className="card" onClick={handleClick}>
+            <div className="blurring dimmable image">
+            <div className="ui dimmer">
+                <div className="content">
+                <div className="center">
+                    <div className="ui inverted button">Go To Salon</div>
+                </div>
+                </div>
+            </div>
+            <img src={salon.image} alt={salon.name}  width="350" height="400"/>
+           
+            </div>
+            <div className="content">
+            <h2 className="header">{salon.name}</h2>
+            <div className="meta">
+                <span className="location">Address:{salon.location}</span>
+            </div>
+            </div>
+            {/* <div class="extra content">
+            <a>
+                <i class="users icon"></i>
+                Address:{salon.location}
+            </a>
+            </div> */}
         </div>
+    </div>
+
+
+
+        // <div onClick={handleClick} >
+        //     <h2></h2>
+            
+        //     <p>Address:{salon.location}</p>
+        //     <p>{salon.description}</p>
+        // </div>
     )
 }
 export default SalonSearchCard;
+

@@ -1,9 +1,9 @@
 import SalonSearchCard from './SalonSearchCard'
 
 
-function SalonDisplay({setSalon, salonList, history}) {
+function SalonDisplay({setSalonInfo, salonList, history}) {
     const salonSearch = salonList.map(salon => {
-        return <SalonSearchCard key={salon.id} salon={salon} history={history} setSalon={setSalon}/>
+        return <SalonSearchCard key={salon.id} salon={salon} history={history} setSalonInfo={setSalonInfo}/>
     })
 
 
