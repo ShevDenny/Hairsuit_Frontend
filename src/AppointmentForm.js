@@ -4,11 +4,19 @@ import TextField from '@material-ui/core/TextField'
 
 
 function AppointmentForm({appointments, setAppointments, salonInfo, history, user}) {
-    const[date, setDate] = useState(new Date(''))
+    const[date, setDate] = useState(new Date())
     const[endTime, setEndTime] = useState('')
     const[time, setTime] = useState('')
     const[description, setDescription] = useState('')
     const[errors, setErrors] = useState(null)
+
+    let today = new Date();
+    let dd = String(today.getDate()).padStart(2, '0');
+    let mm = String(today.getMonth() + 1).padStart(2, '0');
+    let yyyy = today.getFullYear();
+    today =  yyyy + mm + dd;
+
+    console.log(today)
    
 
     
@@ -108,7 +116,7 @@ function AppointmentForm({appointments, setAppointments, salonInfo, history, use
                     value={description} 
                     onChange={(e) => setDescription(e.target.value)}
                 />
-                <button type="submit" margin="normal">Book</button>
+                <TextField type="submit" value="Book" margin="normal" />
 
             </form>
             {errors ? errors.map(error => <div>{error}</div>) : null}

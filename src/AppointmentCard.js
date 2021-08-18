@@ -19,16 +19,22 @@ export default function  AppointmentCard({user, appointment, appointments, setAp
         }) 
       
   }
+ 
 
 
     return (
-        <div className="appt-card">
-            <p>Appointment Location:{appointment.salon.name}</p>
-            <p>Salon Address: {appointment.salon.location}</p>
-            <p>Appointment Date:{appointment.date}</p> 
-            <p>Appointment Time:{appointment.start_time}</p>
-            <button onClick={cancelAppointment} >Cancel Appointment</button>
-            {/* <button>Reschedule Appointment</button>    */}
+        <div id="appt-card" class="ui card">
+            <div class="content">
+                <div class="header">{appointment.salon.name}</div>
+                
+                <div class="description">
+                <p>Salon Address: {appointment.salon.location}</p>
+                <p>Appointment Date:{appointment.date}</p> 
+                <p>Appointment Time:{appointment.start_time}</p>
+                <button onClick={cancelAppointment} >Cancel Appointment</button>
+                 {/* <button>Reschedule Appointment</button>    */}
+                </div>
+            </div>
         </div>
     )
 }

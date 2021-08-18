@@ -20,20 +20,24 @@ function MainContent({user, setUser, history}) {
         .then(res => res.json())
         .then(salonData => setSalons(salonData))
     },[])
-    // console.log(user.appointments)
+    console.log(user.appointments)
 
 
-    // useEffect(() => {
-    //     // const userId = localStorage.getItem("user")
+    useEffect(() => {
+        const userId = localStorage.getItem("token")
     
-    //     // console.log(userId)
-    //     fetch(`http://localhost:3000/appointments?token=${userId}`)
-    //     .then(res => res.json())
-    //     .then(appointmentData => {
-    //         console.log(appointmentData)
-    //         setAppointments(appointmentData)
-    //     })
-    // },[])
+        console.log(userId)
+        fetch(`http://localhost:3000/appointments`)
+        .then(res => res.json())
+        .then(appointmentData => {
+            console.log(appointmentData)
+            let userAppt = appointmentData.filter(appt => appt.user.id === user.id)
+            console.log(userAppt)
+            setAppointments(userAppt)
+        })
+    },[])
+
+    console.log(appointments)
     
 
 
@@ -51,9 +55,9 @@ function MainContent({user, setUser, history}) {
       (salon.specialize_in.toLowerCase().includes(searchTerm.toLowerCase()))
     })
   
-    console.log(filteredSalons)
+    // console.log(filteredSalons)
 
-    console.log(salonInfo)
+    // console.log(salonInfo)
 
     return (
         <>

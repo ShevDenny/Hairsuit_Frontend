@@ -2,7 +2,7 @@ function HomeDisplay() {
 
     return (
         <>
-        <p>Insert Photo carousel</p>
+        {/* <p>Insert Photo carousel</p> */}
         </>
     )
 }

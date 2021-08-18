@@ -75,24 +75,47 @@ const GlobalStyle = createGlobalStyle`
     padding-top: 20%;
     
   }
-  #login form {
+  .log-in form {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
-    padding: 5%;
-
+    width: 40%;
+    padding: 8%;
   }
-  #login input {
-    border-radius: 5px;
+
+  .log-in input {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
     border: 1px solid #ccc;
+    border-radius: 4px;
     box-sizing: border-box;
   }
+
+  button {
+    width: 100%;
+    background-color: white;
+    color: black;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+
+  }
   #login h2 {
+    text-align: center;
+  }
+  #appt-card {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    padding: 5%;
+  }
+
+  .appt-header {
     text-align: center;
   }
 

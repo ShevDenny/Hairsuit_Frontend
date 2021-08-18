@@ -5,9 +5,9 @@ function MyAppointments({appointments, setAppointments, user}) {
    
 
 
-    console.log(user)
+    console.log(appointments)
     
-    const apptDisplay = user.appointments.map(appointment => {
+    const apptDisplay = appointments.map(appointment => {
        
         return (
         <AppointmentCard user={user} key={appointment.id} appointment={appointment} appointments={appointments} setAppointments={setAppointments}/>
@@ -17,7 +17,7 @@ function MyAppointments({appointments, setAppointments, user}) {
 
     return (
         <>
-        <h2>My Appointments</h2>
+        <h2 className="appt-header">My Appointments</h2>
             {apptDisplay}
      
         </>
