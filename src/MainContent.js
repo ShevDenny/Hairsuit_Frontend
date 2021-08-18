@@ -4,13 +4,14 @@ import HomePage from './HomePage'
 import SalonDisplay from './SalonDisplay'
 import MyAppointments from './MyAppointments'
 import SalonPage from './SalonPage'
+import NavBar from './NavBar'
 
 
 function MainContent({user, setUser, history}) {
     const [salons, setSalons] = useState([])
     const [salonInfo, setSalonInfo] = useState({})
     const [searchTerm, setSearchTerm] = useState("")
-    const[appointments,setAppointments] = useState([user.appointments])
+    const[appointments,setAppointments] = useState([])
 
 
   
@@ -19,15 +20,19 @@ function MainContent({user, setUser, history}) {
         .then(res => res.json())
         .then(salonData => setSalons(salonData))
     },[])
-    console.log(user.appointments)
+    // console.log(user.appointments)
 
 
     // useEffect(() => {
-    //     // const user = localStorage.getItem("user")
-    //     // console.log(user)
-    //     fetch(`http://localhost:3000/appointments`)
+    //     // const userId = localStorage.getItem("user")
+    
+    //     // console.log(userId)
+    //     fetch(`http://localhost:3000/appointments?token=${userId}`)
     //     .then(res => res.json())
-    //     .then(appointmentData => setAppointments(appointmentData))
+    //     .then(appointmentData => {
+    //         console.log(appointmentData)
+    //         setAppointments(appointmentData)
+    //     })
     // },[])
     
 
@@ -52,6 +57,7 @@ function MainContent({user, setUser, history}) {
 
     return (
         <>
+            <NavBar user={user} setUser={setUser} history={history} setSearchTerm={setSearchTerm} />
             <Switch>
                 
                 <Route exact path="/home">

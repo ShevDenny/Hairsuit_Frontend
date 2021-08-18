@@ -1,4 +1,17 @@
 import React, {useEffect} from "react"
+import styled from 'styled-components'
+
+const DisplaySalons = styled.div`
+
+    #salon-cards {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+        padding: 5%;
+    }
+
+`
 
 
 function SalonSearchCard({salon, history, setSalonInfo}){
@@ -19,35 +32,35 @@ function SalonSearchCard({salon, history, setSalonInfo}){
 
 
     return (
-        
-       
+        <DisplaySalons>
 
-
-
-        <div className="ui special cards">
-        <div className="card" onClick={handleClick}>
-            <div className="blurring dimmable image">
-            <div className="ui dimmer">
+        <div id="salon-cards" className="ui special cards">
+            <div className="card" onClick={handleClick}>
+                <div className="blurring dimmable image">
+                <div className="ui dimmer">
+                    <div className="content">
+                    <div className="center">
+                        <div className="ui inverted button">Go To Salon</div>
+                    </div>
+                    </div>
+                </div>
+                <img src={salon.image} alt={salon.name}  width="350" height="400"/>
+            
+                </div>
                 <div className="content">
-                <div className="center">
-                    <div className="ui inverted button">Go To Salon</div>
+                <h2 className="header">{salon.name}</h2>
+                <div className="meta">
+                    <span className="location">Address:{salon.location}</span>
                 </div>
                 </div>
-            </div>
-            <img src={salon.image} alt={salon.name}  width="350" height="400"/>
-           
-            </div>
-            <div className="content">
-            <h2 className="header">{salon.name}</h2>
-            <div className="meta">
-                <span className="location">Address:{salon.location}</span>
-            </div>
-            </div>
-            <div class="extra content">
-            <p>{salon.description}</p>
+                <div className="extra content">
+                <p>{salon.description}</p>
+                </div>
             </div>
         </div>
-    </div>
+
+        </DisplaySalons>
+
 
 
 

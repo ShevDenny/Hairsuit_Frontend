@@ -28,7 +28,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 5px;
     // text-align: center;
     text-decoration: none;
-    font-size: 12px;
+    font-size: 15px;
     transition-duration: 0.4s;
     cursor: pointer;
     float: left;
@@ -60,7 +60,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 5px;
     text-align: center;
     text-decoration: none;
-    font-size: 12px;
+    font-size: 15px;
     // transition-duration: 0.4s;
     cursor: pointer;
     float: right;
@@ -74,6 +74,26 @@ const GlobalStyle = createGlobalStyle`
     display: inline-block;
     padding-top: 20%;
     
+  }
+  #login form {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    padding: 5%;
+
+  }
+  #login input {
+    border-radius: 5px;
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  #login h2 {
+    text-align: center;
   }
 
 

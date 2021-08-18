@@ -14,6 +14,7 @@ import LogIn from './LogIn'
 
 function App() {
   const[user, setUser] = useState(null)
+  const[errors, setErrors] = useState(null)
 
   let history = useHistory()
  
@@ -26,7 +27,11 @@ function App() {
     })
     .then(res => res.json())
     .then(currentUser => {
-      setUser(currentUser)
+      if(currentUser.errors) {
+        setErrors(currentUser.errors)
+      } else {
+        setUser(currentUser)
+      }
     })
   },[])
 
@@ -40,7 +45,7 @@ function App() {
     <div className="App">
       
       
-      <NavBar user={user} setUser={setUser} history={history} />
+      {/* {errors ? errors.map(error => <div>{error}</div>) : null} */}
       <MainContent user={user} setUser={setUser} history={history}/>
      
      

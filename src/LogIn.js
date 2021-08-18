@@ -46,11 +46,11 @@ function LogIn({setUser, history}) {
     
 
     return (
-        <div className="login">
+        <div className="log-in">
             {!signUp ?
             <>
-            <form className="login-form" onSubmit={handleSubmit}>
-                <h2>Login In Belle</h2>
+            <form id="login" className="" onSubmit={handleSubmit}>
+                <h2>Sign In </h2>
 
                 <input 
                     type="text" 

@@ -1,6 +1,6 @@
 import React from "react"
 
-export default function  AppointmentCard({appointment, appointments, setAppointments}){
+export default function  AppointmentCard({user, appointment, appointments, setAppointments}){
 
     // console.log(appointment.salon)
     
@@ -9,7 +9,7 @@ export default function  AppointmentCard({appointment, appointments, setAppointm
 
  function cancelAppointment(){
    
-      fetch(`http://localhost:3000/appointments/${appointment.id}`, {
+      fetch(`http://localhost:3000/appointments/${user.id}/${appointment.id}`, {
           method: 'DELETE'
         })
         .then(() => {
