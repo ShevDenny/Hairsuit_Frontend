@@ -10,7 +10,7 @@ function MainContent({user, setUser, history}) {
     const [salons, setSalons] = useState([])
     const [salonInfo, setSalonInfo] = useState({})
     const [searchTerm, setSearchTerm] = useState("")
-    const[appointments,setAppointments] = useState([])
+    const[appointments,setAppointments] = useState([user.appointments])
 
 
   
@@ -19,15 +19,17 @@ function MainContent({user, setUser, history}) {
         .then(res => res.json())
         .then(salonData => setSalons(salonData))
     },[])
-    console.log(user)
+    console.log(user.appointments)
 
 
-    useEffect(() => {
-        fetch(`http://localhost:3000/appointments`)
-        .then(res => res.json())
-        .then(appointmentData => setAppointments(appointmentData))
-    },[])
-    console.log(appointments)
+    // useEffect(() => {
+    //     // const user = localStorage.getItem("user")
+    //     // console.log(user)
+    //     fetch(`http://localhost:3000/appointments`)
+    //     .then(res => res.json())
+    //     .then(appointmentData => setAppointments(appointmentData))
+    // },[])
+    
 
 
   
@@ -56,7 +58,7 @@ function MainContent({user, setUser, history}) {
                     <HomePage setUser={setUser} salons={salons} setSalons={setSalons} setSearchTerm={setSearchTerm} searchTerm={searchTerm} handleSearch={handleSearch}  />
                 </Route>                
                 <Route path="/my-appointments">
-                    <MyAppointments appointments={appointments} setAppointments={setAppointments} />
+                    <MyAppointments appointments={appointments} user={user} setAppointments={setAppointments} />
                 </Route>
                 <Route path="/salons">
                     <SalonDisplay setSalonInfo={setSalonInfo} salonList={filteredSalons} history={history} />

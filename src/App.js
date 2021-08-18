@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom'
 import NavBar from './NavBar'
 import MainContent from './MainContent'
 import 'semantic-ui-css/semantic.min.css';
-
+// import { createGlobalStyle } from "styled-components"
 import LogIn from './LogIn'
 
 
@@ -16,13 +16,7 @@ function App() {
   const[user, setUser] = useState(null)
 
   let history = useHistory()
-  // useEffect(() => {
-  //   const onlineUser = localStorage.getItem("user")
-  //       if(onlineUser){
-  //       setUser(JSON.parse(onlineUser))}
-  // },[])
-
-
+ 
   useEffect(() => {
     const token = localStorage.getItem('token'); 
     fetch(`http://localhost:3000/me`,{
@@ -36,10 +30,8 @@ function App() {
     })
   },[])
 
-  if(!user) return <LogIn user={user} setUser={setUser} history={history}/>
-  if(!user) {
-    return <div>loading...</div>
-  }
+  if(!user) return <LogIn key={user} user={user} setUser={setUser} history={history}/>
+  
 
 
 
@@ -47,10 +39,10 @@ function App() {
   return (
     <div className="App">
       
-      <>
+      
       <NavBar user={user} setUser={setUser} history={history} />
       <MainContent user={user} setUser={setUser} history={history}/>
-      </>
+     
      
     </div>
   );

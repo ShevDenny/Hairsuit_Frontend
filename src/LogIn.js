@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import SignUp from './SignUp'
 
-function Login({setUser, history}) {
+function LogIn({setUser, history}) {
     const[formData, setFormData] = useState({
         username: '',
         password: ''
@@ -83,4 +83,4 @@ function Login({setUser, history}) {
     )
 }
 
-export default Login;
+export default LogIn;

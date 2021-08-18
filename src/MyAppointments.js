@@ -5,12 +5,12 @@ function MyAppointments({appointments, setAppointments, user}) {
    
 
 
-    console.log(appointments)
+    console.log(user)
     
-    const apptDisplay = appointments.map(appointment => {
+    const apptDisplay = user.appointments.map(appointment => {
        
         return (
-        <AppointmentCard key={appointment.id} user={user} appointment={appointment} appointments={appointments} setAppointments={setAppointments}/>
+        <AppointmentCard key={appointment.id} appointment={appointment} appointments={appointments} setAppointments={setAppointments}/>
         )
     })
 

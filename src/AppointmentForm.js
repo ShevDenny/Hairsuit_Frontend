@@ -1,15 +1,5 @@
-import Calendar from 'react-calendar';
 import React, {useState} from 'react'
-import 'react-calendar/dist/Calendar.css'
 import TextField from '@material-ui/core/TextField'
-// import 'date-fns';
-import Grid from '@material-ui/core/Grid';
-// import DateFnsUtils from '@date-io/date-fns';
-import {
-  MuiPickersUtilsProvider,
-  KeyboardTimePicker,
-  KeyboardDatePicker,
-} from '@material-ui/pickers';
 
 
 
@@ -36,7 +26,7 @@ function AppointmentForm({appointments, setAppointments, salonInfo, history, use
         };
         console.log(newAppointment)
         // const user = localStorage.getItem("user")
-        const res = await fetch(`http://localhost:3000/appointments?user_id=${user.id}`, {
+        const res = await fetch(`http://localhost:3000/appointments`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'  

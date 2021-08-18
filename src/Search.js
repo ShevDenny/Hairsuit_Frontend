@@ -10,8 +10,8 @@ function Search({searchTerm, setSearchTerm, handleSearch}){
 
     return (
         <div className="search">
-            <form className="ui input" onSubmit={handleSearch} >
-                <input className="ui input" required type="text" placeholder="Search..." value={searchTerm} onChange={handleChange}/>
+            <form id="search-form" className="ui input" onSubmit={handleSearch} >
+                <input id="search" className="ui input" required type="text" placeholder="Search..." value={searchTerm} onChange={handleChange}/>
                 <input className="ui input" type="submit" value="Search"/>
             </form>
         </div>

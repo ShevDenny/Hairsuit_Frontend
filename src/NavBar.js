@@ -19,14 +19,14 @@ function NavBar({user, setUser, history}) {
 
     return (
         <div className="nav-bar">
-            <h2 className="name">Welcome {user.name}!</h2>           
-            <NavLink to="/home">
+            <h2 className="name">Welcome {user.name}</h2>           
+            <NavLink className="nav-links" to="/home">
                 Home
             </NavLink>
-            <NavLink to="/my-appointments">
+            <NavLink className="nav-links" to="/my-appointments">
                 My Appointments
             </NavLink>
-            <NavLink to="/" onClick={handleLogOut}>
+            <NavLink className="logout-link" to="/" onClick={handleLogOut}>
                 Logout
             </NavLink>           
         </div>

@@ -43,12 +43,9 @@ function SalonSearchCard({salon, history, setSalonInfo}){
                 <span className="location">Address:{salon.location}</span>
             </div>
             </div>
-            {/* <div class="extra content">
-            <a>
-                <i class="users icon"></i>
-                Address:{salon.location}
-            </a>
-            </div> */}
+            <div class="extra content">
+            <p>{salon.description}</p>
+            </div>
         </div>
     </div>
 
@@ -58,7 +55,7 @@ function SalonSearchCard({salon, history, setSalonInfo}){
         //     <h2></h2>
             
         //     <p>Address:{salon.location}</p>
-        //     <p>{salon.description}</p>
+        //     
         // </div>
     )
 }
