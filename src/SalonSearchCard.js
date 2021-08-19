@@ -20,7 +20,12 @@ function SalonSearchCard({salon, history, setSalonInfo}){
         
             console.log(salon.id)
             let id = salon.id
-            fetch(`http://localhost:3000/salons/${id}`)
+            const token = localStorage.getItem('token')
+            fetch(`http://localhost:3000/salons/${id}`, {
+                headers: { 
+                    Authorization: `Bearer ${token}`
+                }
+            })
             .then(res => res.json())
             .then(salonData => {
                 console.log(salonData)
@@ -60,16 +65,6 @@ function SalonSearchCard({salon, history, setSalonInfo}){
         </div>
 
         </DisplaySalons>
-
-
-
-
-        // <div onClick={handleClick} >
-        //     <h2></h2>
-            
-        //     <p>Address:{salon.location}</p>
-        //     
-        // </div>
     )
 }
 export default SalonSearchCard;

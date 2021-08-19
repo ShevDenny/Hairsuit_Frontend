@@ -2,8 +2,7 @@ import React from "react"
 
 export default function  AppointmentCard({user, appointment, appointments, setAppointments}){
 
-    // console.log(appointment.salon)
-    
+ 
 
 
 
@@ -23,11 +22,11 @@ export default function  AppointmentCard({user, appointment, appointments, setAp
 
 
     return (
-        <div id="appt-card" class="ui card">
-            <div class="content">
-                <div class="header">{appointment.salon.name}</div>
+        <div id="appt-card" className="ui card">
+            <div className="content">
+                <div className="header">{appointment.salon.name}</div>
                 
-                <div class="description">
+                <div className="description">
                 <p>Salon Address: {appointment.salon.location}</p>
                 <p>Appointment Date:{appointment.date}</p> 
                 <p>Appointment Time:{appointment.start_time}</p>

@@ -1,46 +1,93 @@
 import React, {useState} from "react"
 
-export default function ReviewForm() {
-    const [review, setReview]= useState('')
+function ReviewForm({salonInfo, user, setSalonReviews}) {
+    const [review, setReview] = useState({
+        comment: '',
+        rating: '',
+        user_id: '',
+        salon_id: ''
+
+    })
+    const [errors, setErrors] = useState(null)
+
+
+    console.log(salonInfo)
+    console.log(review)
+
+
+    console.log(user)
 
     function leaveReview(e){
         e.preventDefault()
-        console.log(review)
-        fetch(`/reviews`, {
+    
+        const newReview = {
+            comment, 
+            rating,
+            salon_id: salonInfo.id,
+            user_id: user.id
+        }
+        console.log(newReview)
+        const token = localStorage.getItem('token')
+        fetch(`http://localhost:3000/reviews?token=${token}`, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`
             },
-            body: JSON.stringify({review})
+            body: JSON.stringify(newReview)
         })
         .then(res => res.json())
-        .then(console.log)
+        .then(reviewData => {
+            if(reviewData.errors) {
+                setErrors(reviewData.errors)
+            } else {
+                setSalonReviews(reviewData)
+            }
+        })
 
     }
 
-    function updateReview(){
 
+    
+    function handleChange(e) {
+        setReview({
+            ...review, 
+            [e.target.name]: e.target.value
+        })
     }
-
-    function deleteReview(){
-
-    }
-
-    function handleChange(e){
-        setReview(e.target.value)
-        console.log(review)
-    }
-
-
+    
+    
+    
+    const {comment, rating} = review
 
 
     return (
         <div>
-            <form className="review-form" onSubmit={leaveReview}>
-                <input type="text" placeholder="Tell us what you think..." value={review} onChange={handleChange}></input>
-                <input type="submit" />
+            <form className="ui input" onSubmit={leaveReview}>
+                <input 
+                    type="text" 
+                    placeholder="Tell us what you think..."
+                    name="comment" 
+                    value={comment} 
+                    onChange={handleChange}
+                />
+                <input 
+                    type="number"
+                    name="rating" 
+                    value={rating}
+                    onChange={handleChange}
+                />
+
+                <input
+                    type="submit"
+                />
+                {errors ? errors.map(error => <div>{error}</div>) : null}
+                    {/* insert photo upload  */}
+                    {/* insert rating from material ui or semantics*/}
             </form>
 
         </div>
     )
 }
+
+export default ReviewForm;

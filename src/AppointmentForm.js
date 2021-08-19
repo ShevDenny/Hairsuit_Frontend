@@ -33,7 +33,7 @@ function AppointmentForm({appointments, setAppointments, salonInfo, history, use
             salon_id: salonInfo.id
         };
         console.log(newAppointment)
-        // const user = localStorage.getItem("user")
+    
         const res = await fetch(`http://localhost:3000/appointments`, {
             method: 'POST',
             headers: {

@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import SignUp from './SignUp'
 
-function LogIn({setUser, history}) {
+function LogIn({setUser, history, user}) {
     const[formData, setFormData] = useState({
         username: '',
         password: ''
@@ -43,9 +43,11 @@ function LogIn({setUser, history}) {
               [e.target.name]: e.target.value
           })
       }
-    
+     
 
     return (
+     
+
         <div className="log-in">
             {!signUp ?
             <>
@@ -80,7 +82,13 @@ function LogIn({setUser, history}) {
             }
 
         </div>
+        
+
+
+
     )
+    
+    
 }
 
 export default LogIn;

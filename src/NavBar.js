@@ -2,13 +2,7 @@ import {NavLink} from 'react-router-dom'
 
 function NavBar({user, setUser, history, setSearchTerm}) {
     function handleLogOut(){
-        // async function logout(){
-        //   const res = await fetch('/logout', {method: 'DELETE'})
-        //   if(res.ok){
-        //     setCurrentUser({})
-        //   }
-        // }
-        // logout()
+
         localStorage.removeItem("user")
         localStorage.removeItem("token")
         setUser(null)

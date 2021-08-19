@@ -1,10 +1,8 @@
 import './App.css';
 import React, {useState, useEffect} from 'react'
 import { useHistory } from 'react-router-dom'
-import NavBar from './NavBar'
 import MainContent from './MainContent'
 import 'semantic-ui-css/semantic.min.css';
-// import { createGlobalStyle } from "styled-components"
 import LogIn from './LogIn'
 
 
@@ -35,19 +33,20 @@ function App() {
     })
   },[])
 
+
+
+
+  //  if(!user) {
+  //       return <h2>loading...</h2>
+  //     }
+ 
+
   if(!user) return <LogIn key={user} user={user} setUser={setUser} history={history}/>
-  
-
-
-
 
   return (
     <div className="App">
       
-      
-      {/* {errors ? errors.map(error => <div>{error}</div>) : null} */}
-      <MainContent user={user} setUser={setUser} history={history}/>
-     
+      <MainContent user={user} setUser={setUser} history={history}/> 
      
     </div>
   );

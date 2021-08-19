@@ -119,6 +119,21 @@ const GlobalStyle = createGlobalStyle`
     text-align: center;
   }
 
+  .salon-page {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    // width: 50%;
+    // padding: 10%;
+}
+// .left {
+//   text-align: left;
+// }
+// .right {
+//   text-align: right;
+// }
+
+
 
 `
 

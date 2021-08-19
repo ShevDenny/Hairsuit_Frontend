@@ -11,23 +11,31 @@ function MainContent({user, setUser, history}) {
     const [salons, setSalons] = useState([])
     const [salonInfo, setSalonInfo] = useState({})
     const [searchTerm, setSearchTerm] = useState("")
-    const[appointments,setAppointments] = useState([])
-
-
-  
+    const[appointments,setAppointments] = useState([])    
+    
+    
     useEffect(() => {
-        fetch(`http://localhost:3000/salons`)
+        const token = localStorage.getItem('token')
+        fetch(`http://localhost:3000/salons`,{
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
         .then(res => res.json())
         .then(salonData => setSalons(salonData))
     },[])
-    console.log(user.appointments)
+    console.log(salons)
 
-
-    useEffect(() => {
-        const userId = localStorage.getItem("token")
     
-        console.log(userId)
-        fetch(`http://localhost:3000/appointments`)
+    
+    useEffect(() => {
+        const token = localStorage.getItem('token')
+        
+        fetch(`http://localhost:3000/appointments`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
         .then(res => res.json())
         .then(appointmentData => {
             console.log(appointmentData)
@@ -36,29 +44,25 @@ function MainContent({user, setUser, history}) {
             setAppointments(userAppt)
         })
     },[])
-
-    console.log(appointments)
     
-
-
-  
+    console.log(appointments)    
+    
     function handleSearch(e) {
         e.preventDefault();
         history.push('/salons')
         
     }
     
-  
+    
     const filteredSalons = salons.filter(salon => {
-      return (salon.name.toLowerCase().includes(searchTerm.toLowerCase()))
-      ||
-      (salon.specialize_in.toLowerCase().includes(searchTerm.toLowerCase()))
+        return (salon.name.toLowerCase().includes(searchTerm.toLowerCase()))
+        ||
+        (salon.specialize_in.toLowerCase().includes(searchTerm.toLowerCase()))
     })
-  
-    // console.log(filteredSalons)
-
-    // console.log(salonInfo)
-
+    console.log(filteredSalons)
+    console.log(salonInfo)
+   
+    
     return (
         <>
             <NavBar user={user} setUser={setUser} history={history} setSearchTerm={setSearchTerm} />
