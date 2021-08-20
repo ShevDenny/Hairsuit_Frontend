@@ -16,8 +16,7 @@ function AppointmentForm({appointments, setAppointments, salonInfo, history, use
     let yyyy = today.getFullYear();
     today =  yyyy + mm + dd;
 
-    console.log(today)
-   
+    console.log(today)   
 
     
    
@@ -33,11 +32,13 @@ function AppointmentForm({appointments, setAppointments, salonInfo, history, use
             salon_id: salonInfo.id
         };
         console.log(newAppointment)
-    
+
+        const token = localStorage.getItem('token')
         const res = await fetch(`http://localhost:3000/appointments`, {
             method: 'POST',
             headers: {
-              'Content-Type': 'application/json'  
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${token}`
             },
             body: JSON.stringify(newAppointment)
         });

@@ -24,7 +24,7 @@ function MainContent({user, setUser, history}) {
         .then(res => res.json())
         .then(salonData => setSalons(salonData))
     },[])
-    console.log(salons)
+    // console.log(salons)
 
     
     
@@ -45,7 +45,7 @@ function MainContent({user, setUser, history}) {
         })
     },[])
     
-    console.log(appointments)    
+    // console.log(appointments)    
     
     function handleSearch(e) {
         e.preventDefault();

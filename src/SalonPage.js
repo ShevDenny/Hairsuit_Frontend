@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import AppointmentForm from './AppointmentForm'
 import ReviewForm from './ReviewForm'
 import Reviews from './Reviews'
@@ -8,15 +8,31 @@ import styled from 'styled-components'
 
 function SalonPage({salonInfo, appointments,setAppointments, history, user}) {
     const [showServices, setShowServices] = useState(false)
-    const [salonReviews, setSalonReviews] = useState(salonInfo.reviews)
+    const [salonReviews, setSalonReviews] = useState([])
     console.log(salonInfo)
+    console.log(salonReviews)
+
+    useEffect(() => {
+        const token = localStorage.getItem('token')
+        fetch(`http://localhost:3000/reviews?token=${token}`, { 
+            headers: {
+                Authorization: `Bearer ${token}`
+            },
+        })
+        .then(res => res.json())
+        .then(reviewData => {
+            let currentReviews = reviewData.filter(rev => rev.salon.id === salonInfo.id)
+            console.log(currentReviews)
+            setSalonReviews(currentReviews)
+        })
+    },[])
     
 
          const serviceList = salonInfo.services.map(service => {
         return <li>{service.name}: $ {service.price}</li>
     })
         const reviewList = salonReviews.map(review => {
-            return <Reviews key={review.id} review={review} />
+            return <Reviews key={review.id} review={review} salonReviews={salonReviews} setSalonReviews={setSalonReviews} user={user} salonInfo={salonInfo} />;
         })
 
   
@@ -65,7 +81,7 @@ function SalonPage({salonInfo, appointments,setAppointments, history, user}) {
                     <div className="description">
                         {reviewList}
                     </div>
-                    <ReviewForm setSalonReviews={setSalonReviews} salonInfo={salonInfo} key={user.id} user={user}/>
+                    <ReviewForm salonReviews={salonReviews} setSalonReviews={setSalonReviews} salonInfo={salonInfo} key={user.id} user={user}/>
                 </div>
             </div> 
            

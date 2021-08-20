@@ -1,6 +1,6 @@
 import React, {useState} from "react"
 
-function ReviewForm({salonInfo, user, setSalonReviews}) {
+function ReviewForm({salonInfo, user, setSalonReviews, salonReviews}) {
     const [review, setReview] = useState({
         comment: '',
         rating: '',
@@ -26,9 +26,8 @@ function ReviewForm({salonInfo, user, setSalonReviews}) {
             salon_id: salonInfo.id,
             user_id: user.id
         }
-        console.log(newReview)
         const token = localStorage.getItem('token')
-        fetch(`http://localhost:3000/reviews?token=${token}`, {
+        fetch(`http://localhost:3000/reviews`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -38,10 +37,16 @@ function ReviewForm({salonInfo, user, setSalonReviews}) {
         })
         .then(res => res.json())
         .then(reviewData => {
-            if(reviewData.errors) {
+            if (reviewData.errors) {
                 setErrors(reviewData.errors)
             } else {
-                setSalonReviews(reviewData)
+                setSalonReviews([...salonReviews, reviewData])
+                setReview({
+                    comment: '',
+                    rating: '',
+                    user_id: '',
+                    salon_id: ''
+            })
             }
         })
 
@@ -50,10 +55,8 @@ function ReviewForm({salonInfo, user, setSalonReviews}) {
 
     
     function handleChange(e) {
-        setReview({
-            ...review, 
-            [e.target.name]: e.target.value
-        })
+        
+        setReview({...review, [e.target.name]: e.target.value})
     }
     
     
@@ -81,7 +84,7 @@ function ReviewForm({salonInfo, user, setSalonReviews}) {
                 <input
                     type="submit"
                 />
-                {errors ? errors.map(error => <div>{error}</div>) : null}
+                {errors ? errors.map(error => <p>{error}</p>) : null}
                     {/* insert photo upload  */}
                     {/* insert rating from material ui or semantics*/}
             </form>

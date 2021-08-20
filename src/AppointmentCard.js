@@ -3,13 +3,13 @@ import React from "react"
 export default function  AppointmentCard({user, appointment, appointments, setAppointments}){
 
  
-
-
-
- function cancelAppointment(){
-   
-      fetch(`http://localhost:3000/appointments/${user.id}/${appointment.id}`, {
-          method: 'DELETE'
+    function cancelAppointment(){
+        const token = localStorage.getItem('token')
+        fetch(`http://localhost:3000/appointments/${user.id}/${appointment.id}`, {
+            method: 'DELETE',
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
         })
         .then(() => {
             let updatedAppts = appointments.filter((appt) => appt.id !== appointment.id)
@@ -17,7 +17,7 @@ export default function  AppointmentCard({user, appointment, appointments, setAp
             alert("Appointment Cancelled")
         }) 
       
-  }
+    }
  
 
 
