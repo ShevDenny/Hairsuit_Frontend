@@ -1,9 +1,11 @@
 import React, {useState} from "react"
+import { DirectUpload } from 'activestorage';
 
 function ReviewForm({salonInfo, user, setSalonReviews, salonReviews}) {
     const [review, setReview] = useState({
         comment: '',
         rating: '',
+        review_photo: {},
         user_id: '',
         salon_id: ''
 
@@ -11,18 +13,46 @@ function ReviewForm({salonInfo, user, setSalonReviews, salonReviews}) {
     const [errors, setErrors] = useState(null)
 
 
-    console.log(salonInfo)
-    console.log(review)
+    // console.log(salonInfo)
+    // console.log(review)
 
 
-    console.log(user)
+    // console.log(user)
 
+    const updateReview = (result) => {
+        setReview({
+            review: result.review,
+            review_photo: result.review_photo
+        })
+    }
+    
+   const uploadFile = (file, newReview) => {
+        const upload = new DirectUpload(file, `http://localhost:3000/rails/active_storage/direct_uploads`)
+        upload.create((error, blob) => {
+            if (error) {
+                console.log(error)
+            } else {
+                fetch(`http://localhost:3000/reviews/${newReview.id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({review_photo: blob.signed_id})
+                })
+                .then(res => res.json())
+                .then(result =>updateReview(result))
+            }
+        })
+    }
+    
     function leaveReview(e){
         e.preventDefault()
     
         const newReview = {
             comment, 
             rating,
+            review_photo,
             salon_id: salonInfo.id,
             user_id: user.id
         }
@@ -36,32 +66,39 @@ function ReviewForm({salonInfo, user, setSalonReviews, salonReviews}) {
             body: JSON.stringify(newReview)
         })
         .then(res => res.json())
-        .then(reviewData => {
-            if (reviewData.errors) {
-                setErrors(reviewData.errors)
-            } else {
-                setSalonReviews([...salonReviews, reviewData])
-                setReview({
-                    comment: '',
-                    rating: '',
-                    user_id: '',
-                    salon_id: ''
-            })
-            }
-        })
-
-    }
-
-
-    
-    function handleChange(e) {
+        .then(reviewData => uploadFile(review_photo, reviewData))
         
-        setReview({...review, [e.target.name]: e.target.value})
+    }
+            
+            // if (reviewData.errors) {
+            //     setErrors(reviewData.errors)
+            // } else {
+                // setSalonReviews([...salonReviews, reviewData])
+                // setReview({
+                //     comment: '',
+                //     rating: '',
+                //     review_photo: '',
+                //     user_id: '',
+                //     salon_id: ''
+            // })
+            // }
+            
+      
+
+
+    function handleChange(e) {
+        if(e.target.name === 'review_photo') {
+            setReview({...review, [e.target.name]: e.target.files[0]})
+        } else {
+
+            setReview({...review, [e.target.name]: e.target.value})
+        }       
+
     }
     
     
     
-    const {comment, rating} = review
+    const {comment, rating, review_photo} = review
 
 
     return (
@@ -78,6 +115,11 @@ function ReviewForm({salonInfo, user, setSalonReviews, salonReviews}) {
                     type="number"
                     name="rating" 
                     value={rating}
+                    onChange={handleChange}
+                />
+                <input 
+                    type="file"
+                    name="review_photo"
                     onChange={handleChange}
                 />
 

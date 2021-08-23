@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 
 function Reviews({review, salonReviews, setSalonReviews, user, salonInfo }) {
-    const [currentReview, setCurrentReview] = useState({})
+    const [currentReview, setCurrentReview] = useState([])
 
     useEffect(() => {
         const token = localStorage.getItem('token')

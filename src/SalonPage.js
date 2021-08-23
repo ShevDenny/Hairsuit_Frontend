@@ -24,7 +24,7 @@ function SalonPage({salonInfo, appointments,setAppointments, history, user}) {
         .then(reviewData => {
             let currentReviews = reviewData.filter(rev => rev.salon.id === salonInfo.id)
             console.log(currentReviews)
-            setSalonReviews(currentReviews.reverse())
+            setSalonReviews(currentReviews)
            
         })
     },[])
