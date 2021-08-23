@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import AppointmentForm from './AppointmentForm'
 import ReviewForm from './ReviewForm'
 import Reviews from './Reviews'
+import Directions from './Directions'
 import styled from 'styled-components'
 
 
@@ -23,17 +24,27 @@ function SalonPage({salonInfo, appointments,setAppointments, history, user}) {
         .then(reviewData => {
             let currentReviews = reviewData.filter(rev => rev.salon.id === salonInfo.id)
             console.log(currentReviews)
-            setSalonReviews(currentReviews)
+            setSalonReviews(currentReviews.reverse())
         })
     },[])
     
+    
+        if(salonInfo.services === undefined){
+        return <a href="http://localhost:2000/home">Please place Search...</a>
+    }
 
          const serviceList = salonInfo.services.map(service => {
         return <li>{service.name}: $ {service.price}</li>
     })
+
+
         const reviewList = salonReviews.map(review => {
             return <Reviews key={review.id} review={review} salonReviews={salonReviews} setSalonReviews={setSalonReviews} user={user} salonInfo={salonInfo} />;
         })
+
+   
+
+    
 
   
 
@@ -83,9 +94,14 @@ function SalonPage({salonInfo, appointments,setAppointments, history, user}) {
                     </div>
                     <ReviewForm salonReviews={salonReviews} setSalonReviews={setSalonReviews} salonInfo={salonInfo} key={user.id} user={user}/>
                 </div>
-            </div> 
-           
-            <AppointmentForm user={user} history={history} salonInfo={salonInfo} appointments={appointments} setAppointments={setAppointments}/>
+            </div>
+            <div className="directions-div">
+                <Directions salonInfo={salonInfo} />
+            </div>
+
+            <div className="apptform-div">
+            <AppointmentForm user={user} history={history} salonInfo={salonInfo} appointments={appointments} setAppointments={setAppointments}/>            
+            </div>           
             
         </ div>
        

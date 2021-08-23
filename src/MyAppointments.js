@@ -1,7 +1,9 @@
 import AppointmentCard from "./AppointmentCard";
 
 
+
 function MyAppointments({appointments, setAppointments, user}) {
+
    
 
 
@@ -15,12 +17,19 @@ function MyAppointments({appointments, setAppointments, user}) {
     })
 
 
+
+
     return (
-        <>
-        <h2 className="appt-header">My Appointments</h2>
+        <div>
+            <h2 className="appt-header">My Appointments</h2>
             {apptDisplay}
+
+           
+           
+        
+            
      
-        </>
+        </div>
     )
 }
 

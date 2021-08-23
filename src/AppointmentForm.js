@@ -1,14 +1,23 @@
 import React, {useState} from 'react'
+import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField'
+import InputLabel from '@material-ui/core/InputLabel';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
 
 
 
 function AppointmentForm({appointments, setAppointments, salonInfo, history, user}) {
     const[date, setDate] = useState(new Date())
     const[endTime, setEndTime] = useState('')
-    const[time, setTime] = useState('')
+    const[time, setTime] = useState("default")
     const[description, setDescription] = useState('')
     const[errors, setErrors] = useState(null)
+
+   
+
 
     let today = new Date();
     let dd = String(today.getDate()).padStart(2, '0');
@@ -87,8 +96,8 @@ function AppointmentForm({appointments, setAppointments, salonInfo, history, use
                     onChange={(e) => setDate(e.target.value)}
                     
                 />
-                <TextField
-                    id="time"
+                {/* <TextField
+                    id="select"
                     label="Appointment Time"
                     type="time"
                     margin="normal"
@@ -103,7 +112,19 @@ function AppointmentForm({appointments, setAppointments, salonInfo, history, use
                     }}
                     value={time} 
                     onChange={(e) => setTime(e.target.value)}
-                />
+                /> */}
+
+                <TextField id="select" label="Appointment Time" margin="normal" InputLabelProps={{ shrink: true, }} inputProps={{ step: 300, }} value={time} onChange={(e) => setTime(e.target.value)} select>
+                    <MenuItem value="default" disabled>Select Time</MenuItem>
+                    <MenuItem value="2:30 pm">2:30pm</MenuItem>
+                    <MenuItem value="3:00 pm">3:00pm</MenuItem>
+                    <MenuItem value="3:30 pm">3:30pm</MenuItem>
+                    <MenuItem value="4:00 pm">4:00pm</MenuItem>
+                    <MenuItem value="4:30 pm">4:30pm</MenuItem>
+                    <MenuItem value="5:00 pm">5:00pm</MenuItem>
+                    <MenuItem value="5:30 pm">5:30pm</MenuItem>
+                    <MenuItem value="6:00 pm">6:00pm</MenuItem>
+                </TextField>
                 <TextField
                     id="desc"
                     label="Reason for Visit"
@@ -120,6 +141,9 @@ function AppointmentForm({appointments, setAppointments, salonInfo, history, use
                 <TextField type="submit" value="Book" margin="normal" />
 
             </form>
+
+
+        
             {errors ? errors.map(error => <div>{error}</div>) : null}
      
         </div>

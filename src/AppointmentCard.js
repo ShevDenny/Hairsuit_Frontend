@@ -1,5 +1,6 @@
 import React from "react"
 
+
 export default function  AppointmentCard({user, appointment, appointments, setAppointments}){
 
  
@@ -31,6 +32,7 @@ export default function  AppointmentCard({user, appointment, appointments, setAp
                 <p>Appointment Date:{appointment.date}</p> 
                 <p>Appointment Time:{appointment.start_time}</p>
                 <button onClick={cancelAppointment} >Cancel Appointment</button>
+               
                  {/* <button>Reschedule Appointment</button>    */}
                 </div>
             </div>

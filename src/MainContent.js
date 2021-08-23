@@ -45,7 +45,10 @@ function MainContent({user, setUser, history}) {
         })
     },[])
     
-    // console.log(appointments)    
+    // console.log(appointments)  
+    
+    
+    
     
     function handleSearch(e) {
         e.preventDefault();

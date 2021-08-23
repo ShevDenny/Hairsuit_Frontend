@@ -9,7 +9,9 @@ function Reviews({review, salonReviews, setSalonReviews, user, salonInfo }) {
 
     // })
 
-    console.log(review.user.id)
+    console.log(review.user)
+
+
     console.log(user.id)
     
     function updateReview(){
@@ -53,6 +55,7 @@ function Reviews({review, salonReviews, setSalonReviews, user, salonInfo }) {
 
     return (
         <div>
+            <p>{review.user.name}</p>
             <p id="review" >{review.comment}</p>
             <p id="rating" >{review.rating}</p>
             { review.user.id === user.id ?
