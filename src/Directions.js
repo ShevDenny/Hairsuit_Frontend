@@ -21,7 +21,7 @@ function Directions({salonInfo}){
 
         let origin = start
         let destination = salonInfo.location
-        let API = 'AIzaSyCOZhWp5VjEHN-9q8ZsYY2Dp8Sve17WuAk'
+        let API = ''
         fetch(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=${origin}&key=${API}`)
         .then(res => res.json())
         .then(originData => {
