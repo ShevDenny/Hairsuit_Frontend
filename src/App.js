@@ -13,6 +13,7 @@ import LogIn from './LogIn'
 function App() {
   const[user, setUser] = useState(null)
   const[errors, setErrors] = useState(null)
+  const[loading, setLoading] = useState(false)
 
   let history = useHistory()
  
@@ -29,6 +30,7 @@ function App() {
         setErrors(currentUser.errors)
       } else {
         setUser(currentUser)
+        setLoading(!loading)
       }
     })
   },[])
@@ -36,9 +38,9 @@ function App() {
 
 
 
-  //  if(!user) {
-  //       return <h2>loading...</h2>
-  //     }
+   if(!loading) {
+        return <h2>Please wait loading...</h2>
+      }
  
 
   if(!user) return <LogIn key={user} user={user} setUser={setUser} history={history}/>

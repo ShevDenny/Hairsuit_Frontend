@@ -1,13 +1,21 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
 function Reviews({review, salonReviews, setSalonReviews, user, salonInfo }) {
-    // const [review, setReview] = useState({
-    //     comment: '',
-    //     rating: '',
-    //     user_id: '',
-    //     salon_id: ''
+    const [currentReview, setCurrentReview] = useState({})
 
-    // })
+    useEffect(() => {
+        const token = localStorage.getItem('token')
+        fetch(`http://localhost:3000/reviews/${review.id}`, { 
+            headers: { 
+                'Authorization': `Bearer ' ${token}`,
+            },
+        })
+        .then(res => res.json())
+        .then(reviewData => setCurrentReview(reviewData))
+
+    },[])
+
+    console.log(currentReview)
 
     console.log(review.user)
 
@@ -56,6 +64,7 @@ function Reviews({review, salonReviews, setSalonReviews, user, salonInfo }) {
     return (
         <div>
             <p>{review.user.name}</p>
+            <img src={`http://localhost:3000/${currentReview.review_photo}`} />
             <p id="review" >{review.comment}</p>
             <p id="rating" >{review.rating}</p>
             { review.user.id === user.id ?
