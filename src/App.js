@@ -10,6 +10,7 @@ import LogIn from './LogIn'
 
 
 
+
 function App() {
   const[user, setUser] = useState(null)
   const[errors, setErrors] = useState(null)
@@ -39,8 +40,10 @@ function App() {
 
 
    if(!loading) {
-        return <h2>Please wait loading...</h2>
+        return <h2>Loading... <i className="hourglass half icon"></i> </h2>
+        
       }
+
  
 
   if(!user) return <LogIn key={user} user={user} setUser={setUser} history={history}/>

@@ -12,69 +12,38 @@ const GlobalStyle = createGlobalStyle`
     background-color: #eff1abf8;
 
 }
-  .nav-bar {
-    // overflow: hidden;
-    padding-top: 1%;
-    height: 50px
-  
-  }
 
-  .nav-links{
-    // font-family: 'Source Sans Pro', sans-serif;
-    // background-color: black;
-    // color: white;
-    border-color: black
-    padding: 15px;
-    margin: 5px;
-    // text-align: center;
-    text-decoration: none;
-    font-size: 15px;
-    transition-duration: 0.4s;
-    cursor: pointer;
-    float: left;
-    display: block;
-    border-radius: 15px;
 
     // &:hover {
     //   background-color: white;
     //   color: black;
   }
-  .name {
-    // color: white;
-    text-align: right;
-    text-decoration: none;
-    font-size: 20px;
-    padding: 1%
-    margin: 5%;
-    // transition-duration: 0.4s;
-    // vertical-align: middle;
-    // font-family: 'Satisfy', cursive;
-  }
-
-  .logout-link {
-    // font-family: 'Source Sans Pro', sans-serif;
-    // background-color: black;
-    // color: white;
-    // border: 2px solid #0B13F9;
-    padding: 1%;
-    margin: 5px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 15px;
-    // transition-duration: 0.4s;
-    cursor: pointer;
-    float: right;
-    display: block;
-    // border-radius: 15px;
-  }
 
 
-  .search {
-    margin: 0 auto;
-    display: inline-block;
-    padding-top: 20%;
+  // .logout-link {
+  //   // font-family: 
+  //   // background-color: black;
+  //   // color: white;
+  //   // border: 2px solid #0B13F9;
+  //   padding: 1%;
+  //   margin: 5px;
+  //   text-align: center;
+  //   text-decoration: none;
+  //   font-size: 15px;
+  //   // transition-duration: 0.4s;
+  //   cursor: pointer;
+  //   float: right;
+  //   display: block;
+  //   // border-radius: 15px;
+  // }
+
+
+  // .search {
+  //   margin: 0 auto;
+  //   display: inline-block;
+  //   padding-top: 20%;
     
-  }
+  // }
   .log-in form {
     display: block;
     margin-left: auto;
@@ -93,7 +62,7 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
-  button {
+  .user-btn {
     width: 100%;
     background-color: white;
     color: black;
@@ -126,12 +95,6 @@ const GlobalStyle = createGlobalStyle`
     // width: 50%;
     // padding: 10%;
 }
-// .left {
-//   text-align: left;
-// }
-// .right {
-//   text-align: right;
-// }
 
 
 

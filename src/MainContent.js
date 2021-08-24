@@ -12,7 +12,8 @@ function MainContent({user, setUser, history}) {
     const [salonInfo, setSalonInfo] = useState({})
     const [searchTerm, setSearchTerm] = useState("")
     const [appointments,setAppointments] = useState([])
-    // const [reviews, setReviews] = useState([])    
+    const [reviews, setReviews] = useState([])  
+    const [salonReviews, setSalonReviews] = useState([])
     
     
     useEffect(() => {
@@ -48,20 +49,25 @@ function MainContent({user, setUser, history}) {
     
     // console.log(appointments)  
     
-    // useEffect(() => {
-    //     const token = localStorage.getItem('token')
-    //     fetch(`http://localhost:3000/reviews`, { 
-    //         headers: { 
-    //             'Authorization': `Bearer ' ${token}`,
-    //         },
-    //     })
-    //     .then(res => res.json())
-    //     // .then(console.log)
-    //     .then(reviewData => setReviews(reviewData))
+    useEffect(() => {
+        const token = localStorage.getItem('token')
+        fetch(`http://localhost:3000/reviews`, { 
+            headers: { 
+                'Authorization': `Bearer ' ${token}`,
+            },
+        })
+        .then(res => res.json())
+        // .then(console.log)
+        .then(reviewData => setReviews(reviewData))
 
-    // },[])
+    },[])
 
     // console.log(reviews)
+
+    const updateReview = (result) => {
+        // setReviews([...reviews, result]) 
+        setSalonReviews([...salonReviews, result]) 
+    }
     
     
     function handleSearch(e) {
@@ -95,7 +101,7 @@ function MainContent({user, setUser, history}) {
                     <SalonDisplay setSalonInfo={setSalonInfo} salonList={filteredSalons} history={history} />
                 </Route>
                 <Route path="/salon-info">
-                    <SalonPage user={user} history={history} salonInfo={salonInfo} appointments={appointments} setAppointments={setAppointments} />
+                    <SalonPage  setSalonReviews={setSalonReviews} salonReviews={salonReviews} updateReview={updateReview} setReviews={setReviews} reviews={reviews} user={user} history={history} salonInfo={salonInfo} appointments={appointments} setAppointments={setAppointments} />
                 </Route>              
             </Switch>        
         </>

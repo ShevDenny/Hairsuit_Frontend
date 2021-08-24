@@ -1,4 +1,6 @@
 import React from "react"
+import dateFormat from 'dateformat';
+import moment from 'moment';
 
 
 export default function  AppointmentCard({user, appointment, appointments, setAppointments}){
@@ -20,6 +22,7 @@ export default function  AppointmentCard({user, appointment, appointments, setAp
       
     }
  
+    // console.log(moment(appointment.start_time).format("LT"))
 
 
     return (
@@ -29,8 +32,8 @@ export default function  AppointmentCard({user, appointment, appointments, setAp
                 
                 <div className="description">
                 <p>Salon Address: {appointment.salon.location}</p>
-                <p>Appointment Date:{appointment.date}</p> 
-                <p>Appointment Time:{appointment.start_time}</p>
+                <p>Date: {dateFormat(appointment.date, "dddd, mmmm dS, yyyy")}</p> 
+                <p>Time: {moment(appointment.start_time).format("LT")}</p>
                 <button onClick={cancelAppointment} >Cancel Appointment</button>
                
                  {/* <button>Reschedule Appointment</button>    */}

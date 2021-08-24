@@ -88,7 +88,7 @@ function SignUp({setUser, history}) {
                 />
                 {/* <button onClick={() => setFormData(!formData.admin)}>Admin</button> */}
                 {errors ? errors.map(error => <div>{error}</div>) : null}
-                <button type="submit" value="Sign up!">Sign up</button>
+                <button className="user-btn" type="submit" value="Sign up!">Sign up</button>
                 <a href="http://localhost:2000/">Already have an account?</a>
             </form>
         </div>

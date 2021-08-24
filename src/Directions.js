@@ -6,6 +6,7 @@ function Directions({salonInfo}){
     const [start, setStart] = useState('')
 
     const directionsDisplay = locationDirections.map((step) => {
+        console.log(step.html_instructions);
         return <p>{step.html_instructions}</p>
     }) 
 
@@ -48,12 +49,12 @@ function Directions({salonInfo}){
 
 
     return (
-        <div>
-        <button onClick={() => setDirectionsForm(!directionsForm)}>Click for Directions</button>
+        <div className="directions-div">
+        <button classname="directions-btn" onClick={() => setDirectionsForm(!directionsForm)}>Click for Directions</button>
         {directionsForm ?
         <form onSubmit={getDirections}>
             <input type="text" placeholder="Enter starting Address" value={start} onChange={(e) => setStart(e.target.value)} />
-            <button>Get Directions</button>
+            <button className="directions-btn">Get Directions</button>
 
         </form>
         :

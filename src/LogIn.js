@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import SignUp from './SignUp'
+// import AccountCircleIcon from '@material-ui/icons/AccountCircle'
 
 function LogIn({setUser, history, user}) {
     const[formData, setFormData] = useState({
@@ -72,9 +73,9 @@ function LogIn({setUser, history, user}) {
                     required 
                 />
                 {errors ? errors.map(error => <div>{error}</div>) : null}
-                <button type="submit" value="Login">Login</button>
+                <button className="user-btn" type="submit" value="Login">Login</button>
                 
-                <button value="signup" onClick={() => setSignUp(!signUp)}>Create an Account</button>
+                <button className="user-btn" value="signup" onClick={() => setSignUp(!signUp)}>Create an Account</button>
                 
             </form>
             </>

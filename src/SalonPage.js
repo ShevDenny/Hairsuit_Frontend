@@ -5,49 +5,60 @@ import Reviews from './Reviews'
 import Directions from './Directions'
 import styled from 'styled-components'
 
+const SalonDisplay = styled.div` 
 
 
-function SalonPage({salonInfo, appointments,setAppointments, history, user}) {
+
+`
+
+
+
+function SalonPage({ setSalonReviews, salonReviews, updateReview, reviews, setReviews, salonInfo, appointments,setAppointments, history, user}) {
     const [showServices, setShowServices] = useState(false)
-    const [salonReviews, setSalonReviews] = useState([])
+    // const [salonReviews, setSalonReviews] = useState([])
     console.log(salonInfo)
-    console.log(salonReviews)
-
+    // console.log(salonInfo)
     useEffect(() => {
         const token = localStorage.getItem('token')
-        fetch(`http://localhost:3000/reviews?token=${token}`, { 
-            headers: {
-                Authorization: `Bearer ${token}`
+        fetch(`http://localhost:3000/reviews`, { 
+            headers: { 
+                'Authorization': `Bearer ' ${token}`,
             },
         })
         .then(res => res.json())
-        .then(reviewData => {
-            console.log(reviewData)
-            let currentReviews = reviewData.filter(rev => rev.salon.id === salonInfo.id)
-            console.log(currentReviews)
-            setSalonReviews(currentReviews)
-           
+        .then(data => {
+            let salonRevs = data.filter(review => review.salon.id === salonInfo.id)
+            setSalonReviews(salonRevs)
         })
     },[])
+
+    
+
+    // setSalonReviews(salonRevs)
     
     
         if(salonInfo.services === undefined){
         return <a href="http://localhost:2000/home">Please place Search...</a>
     }
 
-         const serviceList = salonInfo.services.map(service => {
+    const serviceList = salonInfo.services.map(service => {
         return <li>{service.name}: $ {service.price}</li>
     })
 
 
-        const reviewList = salonReviews.map(review => {
-            return <Reviews key={review.id} review={review} salonReviews={salonReviews} setSalonReviews={setSalonReviews} user={user} salonInfo={salonInfo} />;
-        })
+    const reviewList = salonReviews.map(review => {
+            return <Reviews salonReviews={salonReviews} setSalonReviews={setSalonReviews} key={review.id} review={review} setReviews={setReviews} user={user} salonInfo={salonInfo} />;
+    })
+
+
 
    
 
 
     return (
+        <SalonDisplay>
+
+        
 
       
             
@@ -66,7 +77,7 @@ function SalonPage({salonInfo, appointments,setAppointments, history, user}) {
                 </div>
             </div>
             
-            <div id="right" className="ui card">
+            <div className="ui card">
                 <div className="content">
                     <div className="header" onClick={() => setShowServices(!showServices)}>Services</div>
                     {showServices ?
@@ -83,15 +94,14 @@ function SalonPage({salonInfo, appointments,setAppointments, history, user}) {
                 </div>
             </div> 
             
-            {/* customer image carousel */}
             
-            <div id="right" className="ui card">
+            <div id="right" className="">
                 <div className="content">
                     <div className="header">Salon Reviews</div>                
                     <div className="description">
                         {reviewList}
                     </div>
-                    <ReviewForm salonReviews={salonReviews} setSalonReviews={setSalonReviews} salonInfo={salonInfo} key={user.id} user={user}/>
+                    <ReviewForm updateReview={updateReview} reviews={reviews} setReviews={setReviews} salonInfo={salonInfo} key={user.id} user={user}/>
                 </div>
             </div>
             <div className="directions-div">
@@ -103,7 +113,7 @@ function SalonPage({salonInfo, appointments,setAppointments, history, user}) {
             </div>           
             
         </ div>
-       
+    </SalonDisplay>  
     )
 }
 
