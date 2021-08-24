@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
 
 function Reviews({review, salonReviews, setSalonReviews, user, salonInfo }) {
-    const [currentReview, setCurrentReview] = useState([])
+    const [currentReviews, setCurrentReviews] = useState([])
 
-    useEffect(() => {
+  useEffect(() => {
         const token = localStorage.getItem('token')
         fetch(`http://localhost:3000/reviews/${review.id}`, { 
             headers: { 
@@ -11,16 +11,30 @@ function Reviews({review, salonReviews, setSalonReviews, user, salonInfo }) {
             },
         })
         .then(res => res.json())
-        .then(reviewData => setCurrentReview(reviewData))
+        // .then(console.log)
+        .then(reviewData => setCurrentReviews(reviewData))
 
     },[])
 
-    console.log(currentReview)
+    console.log(currentReviews)
 
-    console.log(review.user)
+    // const revDisplay = currentReviews.map(rev => {
+    //     return (
+    //         <div>
+    //             <p>{review.user.name}</p>
+    //             <img src={`http://localhost:3000/${rev.review_photo}`} />
+    //             <p id="review" >{review.comment}</p>
+    //             <p id="rating" >{review.rating}</p>
+    //         </div>
+    //     )
+    // })
+
+    // console.log(currentReview)
+
+    // console.log(review)
 
 
-    console.log(user.id)
+    // console.log(user.id)
     
     function updateReview(){
         // const Id = review.id
@@ -64,7 +78,7 @@ function Reviews({review, salonReviews, setSalonReviews, user, salonInfo }) {
     return (
         <div>
             <p>{review.user.name}</p>
-            <img src={`http://localhost:3000/${currentReview.review_photo}`} />
+            {/* <img src={`http://localhost:3000/${currentReview.review_photo}`} /> */}
             <p id="review" >{review.comment}</p>
             <p id="rating" >{review.rating}</p>
             { review.user.id === user.id ?

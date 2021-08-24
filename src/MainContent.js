@@ -11,7 +11,8 @@ function MainContent({user, setUser, history}) {
     const [salons, setSalons] = useState([])
     const [salonInfo, setSalonInfo] = useState({})
     const [searchTerm, setSearchTerm] = useState("")
-    const[appointments,setAppointments] = useState([])    
+    const [appointments,setAppointments] = useState([])
+    // const [reviews, setReviews] = useState([])    
     
     
     useEffect(() => {
@@ -47,7 +48,20 @@ function MainContent({user, setUser, history}) {
     
     // console.log(appointments)  
     
-    
+    // useEffect(() => {
+    //     const token = localStorage.getItem('token')
+    //     fetch(`http://localhost:3000/reviews`, { 
+    //         headers: { 
+    //             'Authorization': `Bearer ' ${token}`,
+    //         },
+    //     })
+    //     .then(res => res.json())
+    //     // .then(console.log)
+    //     .then(reviewData => setReviews(reviewData))
+
+    // },[])
+
+    // console.log(reviews)
     
     
     function handleSearch(e) {
@@ -62,8 +76,8 @@ function MainContent({user, setUser, history}) {
         ||
         (salon.specialize_in.toLowerCase().includes(searchTerm.toLowerCase()))
     })
-    console.log(filteredSalons)
-    console.log(salonInfo)
+    // console.log(filteredSalons)
+    // console.log(salonInfo)
    
     
     return (

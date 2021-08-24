@@ -5,7 +5,7 @@ function ReviewForm({salonInfo, user, setSalonReviews, salonReviews}) {
     const [review, setReview] = useState({
         comment: '',
         rating: '',
-        review_photo: {},
+        review_photo: '',
         user_id: '',
         salon_id: ''
 
@@ -13,16 +13,22 @@ function ReviewForm({salonInfo, user, setSalonReviews, salonReviews}) {
     const [errors, setErrors] = useState(null)
 
 
-    // console.log(salonInfo)
-    // console.log(review)
+    console.log(salonInfo)
+    console.log(salonReviews)
 
 
     // console.log(user)
 
     const updateReview = (result) => {
+        setSalonReviews([
+            ...salonReviews, result
+        ])
         setReview({
-            review: result.review,
-            review_photo: result.review_photo
+            comment: '',
+            rating: '',
+            review_photo: '',
+            user_id: '',
+            salon_id: ''
         })
     }
     
@@ -32,16 +38,19 @@ function ReviewForm({salonInfo, user, setSalonReviews, salonReviews}) {
             if (error) {
                 console.log(error)
             } else {
+                const token = localStorage.getItem('token')
                 fetch(`http://localhost:3000/reviews/${newReview.id}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',
+                        Authorization: `Bearer ${token}`,
                         'Accept': 'application/json'
                     },
                     body: JSON.stringify({review_photo: blob.signed_id})
                 })
                 .then(res => res.json())
-                .then(result =>updateReview(result))
+                // .then(console.log)
+                .then(result => updateReview(result))
             }
         })
     }
@@ -66,6 +75,7 @@ function ReviewForm({salonInfo, user, setSalonReviews, salonReviews}) {
             body: JSON.stringify(newReview)
         })
         .then(res => res.json())
+        // .then(console.log)
         .then(reviewData => uploadFile(review_photo, reviewData))
         
     }
