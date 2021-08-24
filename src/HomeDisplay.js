@@ -1,5 +1,14 @@
 import 'react-slideshow-image/dist/styles.css'
 import { Fade } from 'react-slideshow-image';
+import styled from 'styled-components';
+
+const HomeDis = styled.div` 
+  .slide-container {
+    margin-top: 30px;
+  }
+
+`
+
 
 
 function HomeDisplay() {
@@ -16,6 +25,7 @@ function HomeDisplay() {
     ]
 
     return (
+      <HomeDis> 
         <div className="slide-container">
         <Fade>
           <div className="each-fade">
@@ -62,6 +72,7 @@ function HomeDisplay() {
           </div>
         </Fade>
       </div>
+    </HomeDis>
     )
 }
 

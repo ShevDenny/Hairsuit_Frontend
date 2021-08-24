@@ -13,7 +13,7 @@ function Reviews({review, salonReviews, setSalonReviews, user, salonInfo }) {
 
     console.log(salonReviews)
 
-    console.log(review.review.id)
+    console.log(review)
    
   
 

@@ -16,7 +16,7 @@ const SalonDisplay = styled.div`
 function SalonPage({ setSalonReviews, salonReviews, updateReview, reviews, setReviews, salonInfo, appointments,setAppointments, history, user}) {
     const [showServices, setShowServices] = useState(false)
     // const [salonReviews, setSalonReviews] = useState([])
-    console.log(salonInfo)
+    console.log(salonInfo.id)
     // console.log(salonInfo)
     useEffect(() => {
         const token = localStorage.getItem('token')

@@ -14,6 +14,7 @@ const GlobalStyle = createGlobalStyle`
 }
 
 
+
     // &:hover {
     //   background-color: white;
     //   color: black;
@@ -38,12 +39,14 @@ const GlobalStyle = createGlobalStyle`
   // }
 
 
-  // .search {
-  //   margin: 0 auto;
-  //   display: inline-block;
-  //   padding-top: 20%;
+  .search {
+    margin: 0 auto;
+    // display: inline-block;
+    margin-top: 100px;
+    left: 200px;
     
-  // }
+    
+  }
   .log-in form {
     display: block;
     margin-left: auto;
@@ -95,6 +98,33 @@ const GlobalStyle = createGlobalStyle`
     // width: 50%;
     // padding: 10%;
 }
+
+
+.name {
+  // color: white;
+  // text-align: right;
+  // float: left;
+  // text-decoration: none;
+  font-family: 'Courgette', cursive;
+  font-size: 16px;
+  margin-top: -900px;
+  margin-left: -700px;
+  // // padding: 1%
+  // // margin: 5%;
+  // // transition-duration: 0.4s;
+  // // vertical-align: middle;
+  // // font-family: 'Satisfy', cursive;
+}
+
+.footer-div{
+  display: flex; 
+  justify-content: space-between; 
+  // padding: 4rem 8rem;
+  width:100%;
+  height: 50px;
+  background-color: gray;
+}
+
 
 
 

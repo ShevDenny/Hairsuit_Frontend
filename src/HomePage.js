@@ -2,14 +2,14 @@ import React from 'react'
 import Search from "./Search";
 import HomeDisplay from "./HomeDisplay";
 
-function HomePage({searchTerm, setSearchTerm, handleSearch, setUser}) {
+function HomePage({user, searchTerm, setSearchTerm, handleSearch, setUser}) {
 
 
     
 
     return (
         <>
-        <Search setSearchTerm={setSearchTerm} searchTerm={searchTerm} handleSearch={handleSearch} />
+        <Search user={user} setSearchTerm={setSearchTerm} searchTerm={searchTerm} handleSearch={handleSearch} />
         <HomeDisplay />
         </>
     )

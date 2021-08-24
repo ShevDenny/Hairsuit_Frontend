@@ -92,7 +92,7 @@ function MainContent({user, setUser, history}) {
             <Switch>
                 
                 <Route exact path="/home">
-                    <HomePage setUser={setUser} salons={salons} setSalons={setSalons} setSearchTerm={setSearchTerm} searchTerm={searchTerm} handleSearch={handleSearch}  />
+                    <HomePage user={user} setUser={setUser} salons={salons} setSalons={setSalons} setSearchTerm={setSearchTerm} searchTerm={searchTerm} handleSearch={handleSearch}  />
                 </Route>                
                 <Route path="/my-appointments">
                     <MyAppointments appointments={appointments} user={user} setAppointments={setAppointments} />

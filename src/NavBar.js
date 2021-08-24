@@ -6,6 +6,8 @@ const NavDiv = styled.div`
     font-family: 'Courgette', cursive;
     font-size: 60px;
     color: gray;
+    top: 50px;
+    left: -800px;
   }
 
   .nav-bar {
@@ -14,11 +16,11 @@ const NavDiv = styled.div`
     height: 50px
     width: 210px;
     position: relative; 
-    top: 50px;
-    position: fixed;
+    top: 40px;
     bottom: 0;
-    left: 0;
+    left: 295px;
     z-index: 1000;
+    
   
   }
 
@@ -41,14 +43,15 @@ const NavDiv = styled.div`
 
     .name {
         // color: white;
-        text-align: right;
-        text-decoration: none;
-        font-size: 20px;
-        // padding: 1%
-        // margin: 5%;
-        // transition-duration: 0.4s;
-        // vertical-align: middle;
-        // font-family: 'Satisfy', cursive;
+        // text-align: right;
+        float: left;
+        // text-decoration: none;
+        // font-size: 50px;
+        // // padding: 1%
+        // // margin: 5%;
+        // // transition-duration: 0.4s;
+        // // vertical-align: middle;
+        // // font-family: 'Satisfy', cursive;
       }
 
 
@@ -70,23 +73,29 @@ function NavBar({user, setUser, history, setSearchTerm}) {
 
 
     return (
+       
         <NavDiv> 
+            
+        
+            
+        
         <div className="nav-bar">
             <h1 className="title" >HairSuit</h1>
-            <h2 className="name">Welcome {user.name}</h2>
+            
             <nav className="nav_bar">           
                 <NavLink className="nav-links" to="/home"   onClick={() => setSearchTerm("")}>
-                Home
+                <button className="link-btn">Home</button>
                 </NavLink>
-                <NavLink className="nav-links" to="/    my-appointments">
-                 My Appointments
+                <NavLink className="nav-links" to="/my-appointments">
+                <button className="link-btn">My Appointments</button>
                 </NavLink>
                 <NavLink className="nav-links" to="/" onClick=    {handleLogOut}>
-                   Logout
+                <button className="link-btn">Logout</button>
                 </NavLink>
             </nav>            
         </div>
         </NavDiv>
+        
     )
 }
 

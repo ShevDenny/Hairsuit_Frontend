@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom'
 import MainContent from './MainContent'
 import 'semantic-ui-css/semantic.min.css';
 import LogIn from './LogIn'
+import Footer from './Footer'
 
 
 
@@ -52,7 +53,7 @@ function App() {
     <div className="App">
       
       <MainContent user={user} setUser={setUser} history={history}/> 
-     
+      <Footer />
     </div>
   );
 }
