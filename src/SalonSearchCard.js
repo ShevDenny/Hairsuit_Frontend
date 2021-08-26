@@ -3,12 +3,22 @@ import styled from 'styled-components'
 
 const DisplaySalons = styled.div`
 
+    #salon-dets {
+        // display: block;
+        // margin-left: auto;
+        // margin-right: auto;
+        width: 100%;        
+        height: 400px;
+        overflow: auto;
+    }
     #salon-cards {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        width: 50%;
+        // width: 1000px;
         padding: 5%;
+        float: left;
+        margin-right: -90 px;
+        margin-left: 70px;
+   
+        
     }
 
 `
@@ -48,18 +58,20 @@ function SalonSearchCard({salon, history, setSalonInfo}){
                         <div className="ui inverted button">Go To Salon</div>
                     </div>
                     </div>
-                </div>
-                <img src={salon.image} alt={salon.name}  width="350" height="400"/>
+                </div>               
             
                 </div>
-                <div className="content">
-                <h2 className="header">{salon.name}</h2>
+                <div id="salon-dets" className="content"> 
+                    <h2 className="header">{salon.name}</h2>
+                    <br></br>
+                    <img src={salon.image} alt={salon.name}  width="250" height="300"/>
+                    <br></br>
                 <div className="meta">
-                    <span className="location">Address:{salon.location}</span>
-                </div>
+                    <span className="location"><b>Address:</b> {salon.location}</span>
                 </div>
                 <div className="extra content">
-                <p>{salon.description}</p>
+                    <p>{salon.description}</p>
+                </div>
                 </div>
             </div>
         </div>

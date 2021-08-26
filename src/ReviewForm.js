@@ -1,30 +1,19 @@
-import React, {useState} from "react"
+import React, {useState} from "react";
 import { DirectUpload } from 'activestorage';
 import { makeStyles } from '@material-ui/core/styles';
 import Rating from '@material-ui/lab/Rating';
 import Box from '@material-ui/core/Box';
+import styled from 'styled-components'
+
+const Form = styled.div` 
+    .review-form {
+        width: 100%
+    }
 
 
-const labels = {
-    0.5: 'Terrible',
-    1: 'Terrible+',
-    1.5: 'Poor',
-    2: 'Poor+',
-    2.5: 'Ok',
-    3: 'Ok+',
-    3.5: 'Good',
-    4: 'Good+',
-    4.5: 'Excellent',
-    5: 'Excellent+',
-  };
-  
-  const useStyles = makeStyles({
-    root: {
-      width: 200,
-      display: 'flex',
-      alignItems: 'center',
-    },
-  });
+`
+
+
 
 
 function ReviewForm({salonInfo, user, updateReview, reviews}) {
@@ -38,11 +27,7 @@ function ReviewForm({salonInfo, user, updateReview, reviews}) {
     })
     const [errors, setErrors] = useState(null)
 
-    // const [value, setValue] = ;
-    const [hover, setHover] = useState(-1);
-    const classes = useStyles();
-
-
+ 
     // console.log(salonInfo)
     console.log(reviews)
 
@@ -80,7 +65,7 @@ function ReviewForm({salonInfo, user, updateReview, reviews}) {
         const upload = new DirectUpload(file, `http://localhost:3000/rails/active_storage/direct_uploads`)
         upload.create((error, blob) => {
             if (error) {
-                console.log(error)
+                setErrors(error)
             } else {
                 const token = localStorage.getItem('token')
                 fetch(`http://localhost:3000/reviews/${newReview.id}`, {
@@ -110,18 +95,6 @@ function ReviewForm({salonInfo, user, updateReview, reviews}) {
     
 
 
-    // if (reviewData.errors) {
-        //     setErrors(reviewData.errors)
-            // } else {
-                // setSalonReviews([...salonReviews, reviewData])
-                // setReview({
-                //     comment: '',
-                //     rating: '',
-                //     review_photo: '',
-                //     user_id: '',
-                //     salon_id: ''
-            // })
-            // }
             
       
 
@@ -138,16 +111,19 @@ function ReviewForm({salonInfo, user, updateReview, reviews}) {
     
     
     
-    const {comment, rating, review_photo} = review
+    const {comment, review_photo} = review
 
 
     return (
-        <div className={classes.root}>
-            
-            <form className="ui input" onSubmit={leaveReview}>
+        <Form> 
+        <div className="review-form">
+        <br></br>
+        <br></br>
+        <br></br>
+            <form className="ui form" onSubmit={leaveReview}>
                 <input 
                     type="text" 
-                    placeholder="Tell us what you think..."
+                    placeholder="Share your experience with us!"
                     name="comment" 
                     value={comment} 
                     onChange={handleChange}
@@ -160,35 +136,23 @@ function ReviewForm({salonInfo, user, updateReview, reviews}) {
                     value={rating}
                     onChange={handleChange}
                 /> */}
-              
-               
-                {/* <Rating
-                    name="hover-feedback"
-                    value={rating}
-                    precision={0.5}
-                    onChange={handleChange}
-                    onChangeActive={(event, newHover) => {
-                    setHover(newHover);
-                    }}
-                />
-                {rating !== null && <Box ml={2}>{labels[hover !== -1 ? hover : rating]}</Box>} */}
         
-                <input 
+                <input
+                    // className="ui dropdown" 
                     type="file"
                     name="review_photo"
                     onChange={handleChange}
                 />
 
-                <input
-                    type="submit"
-                />
+                <button className="ui button" type="submit"> Leave a Review</button>
+               
                 {errors ? errors.map(error => <p>{error}</p>) : null}
                     {/* insert photo upload  */}
                     {/* insert rating from material ui or semantics*/}
-            </form>           
-            
-
+            </form> 
+              
         </div>
+        </Form>
     )
 }
 

@@ -2,7 +2,7 @@ import React from 'react'
 import Search from "./Search";
 import HomeDisplay from "./HomeDisplay";
 
-function HomePage({user, searchTerm, setSearchTerm, handleSearch, setUser}) {
+function HomePage({user, searchTerm, setSearchTerm, handleSearch}) {
 
 
     

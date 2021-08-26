@@ -3,16 +3,25 @@ import AppointmentCard from "./AppointmentCard";
 
 
 function MyAppointments({appointments, setAppointments, user}) {
+    let today = new Date();
 
-   
+    const sortedAppts = appointments.sort((a,b) => {
+        return new Date(a.date) - new Date(b.date)
+    })
+
+   console.log(sortedAppts)
+
+//    console.log(today)
+   const filteredAppts = appointments.filter(appt => appt.date < today)
 
 
-    console.log(appointments)
+
+    console.log(filteredAppts)
     
-    const apptDisplay = appointments.map(appointment => {
+    const apptDisplay = sortedAppts.map(appointment => {
        
         return (
-        <AppointmentCard user={user} key={appointment.id} appointment={appointment} appointments={appointments} setAppointments={setAppointments}/>
+        <AppointmentCard today={today} user={user} key={appointment.id} appointment={appointment} appointments={appointments} setAppointments={setAppointments}/>
         )
     })
 

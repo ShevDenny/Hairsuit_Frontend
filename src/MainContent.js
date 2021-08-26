@@ -5,6 +5,7 @@ import SalonDisplay from './SalonDisplay'
 import MyAppointments from './MyAppointments'
 import SalonPage from './SalonPage'
 import NavBar from './NavBar'
+import LogIn from './LogIn'
 
 
 function MainContent({user, setUser, history}) {
@@ -62,7 +63,7 @@ function MainContent({user, setUser, history}) {
 
     },[])
 
-    // console.log(reviews)
+    console.log(reviews)
 
     const updateReview = (result) => {
         // setReviews([...reviews, result]) 
@@ -102,7 +103,10 @@ function MainContent({user, setUser, history}) {
                 </Route>
                 <Route path="/salon-info">
                     <SalonPage  setSalonReviews={setSalonReviews} salonReviews={salonReviews} updateReview={updateReview} setReviews={setReviews} reviews={reviews} user={user} history={history} salonInfo={salonInfo} appointments={appointments} setAppointments={setAppointments} />
-                </Route>              
+                </Route>
+                {/* <Route path="/login">
+                    <LogIn key={user} user={user} setUser={setUser} history={history}/>
+                </Route>               */}
             </Switch>        
         </>
     )

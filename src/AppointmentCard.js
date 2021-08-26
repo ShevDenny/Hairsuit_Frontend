@@ -1,9 +1,28 @@
-import React from "react"
+import React, {useState} from "react"
 import dateFormat from 'dateformat';
 import moment from 'moment';
+import styled from 'styled-components'
+
+const Appt = styled.div` 
+    .delete-btn {
+
+    }
 
 
-export default function  AppointmentCard({user, appointment, appointments, setAppointments}){
+
+`
+
+
+
+export default function  AppointmentCard({today, user, appointment, appointments, setAppointments}){
+    const [upcoming, setUpcoming] = useState([])
+    const [past, setPast] = useState([])
+    console.log(appointment)
+
+    // let filteredAppts = appointment.filter(appt => appt.date > today)
+    // console.log(filteredAppts)
+
+  
 
  
     function cancelAppointment(){
@@ -31,10 +50,10 @@ export default function  AppointmentCard({user, appointment, appointments, setAp
                 <div className="header">{appointment.salon.name}</div>
                 
                 <div className="description">
-                <p>Salon Address: {appointment.salon.location}</p>
-                <p>Date: {dateFormat(appointment.date, "dddd, mmmm dS, yyyy")}</p> 
-                <p>Time: {moment(appointment.start_time).format("LT")}</p>
-                <button onClick={cancelAppointment} >Cancel Appointment</button>
+                <p><b>Address:</b> {appointment.salon.location}</p>
+                <p><b>Date:</b> {dateFormat(appointment.date, "dddd, mmmm dS, yyyy")}</p> 
+                <p><b>Time:</b> {moment(appointment.start_time).format("LT")}</p>
+                <button className="ui button" onClick={cancelAppointment} >Cancel Appointment</button>
                
                  {/* <button>Reschedule Appointment</button>    */}
                 </div>

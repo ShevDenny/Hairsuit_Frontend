@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 
+
 function SignUp({setUser, history}) {
     const[formData, setFormData] = useState({
         name: "",
@@ -57,7 +58,7 @@ function SignUp({setUser, history}) {
     return (
         <div className="signup">
             <form className="signup-form" onSubmit={handleSubmit}>
-                <h2>Sign up and join our community today! </h2>
+                <h2> Join our community today </h2>
 
                 <input 
                     type="text" 

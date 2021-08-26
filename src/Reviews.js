@@ -2,8 +2,20 @@ import React, {useEffect, useState} from 'react';
 import styled from 'styled-components'
 
 const ReviewDiv = styled.div`
-    .review-div {
 
+    .delete {
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        float: right
+    }
+    .review-image {
+        float: left;
+    }
+    #user-name {
+        text-align: left;
+        font-size: 14px;
+        color: gray;
     }
 
 
@@ -38,13 +50,17 @@ function Reviews({review, salonReviews, setSalonReviews, user, salonInfo }) {
         <ReviewDiv>
 
             <div classname="reviews-div">
-                <p>{review.user.name}</p>
-                <img src={`http://localhost:3000/${review.review_photo}`} />
+                <br></br>
+                <br></br>
+                <p id="user-name">{review.user.name} says...</p>
+                <img className="review-image" src={`http://localhost:3000/${review.review_photo}`} width="125" height= "125" />
                 <p id="review" >{review.review.comment}</p>
+                
+                
                 {/* <p id="rating" >{review.rating}</p> */}
                 { review.user.id === user.id ?
                 <>
-                <button onClick={removeReview} ><i class="trash alternate outline icon"></i></button>
+                <button className="delete" onClick={removeReview} ><i class="trash alternate outline icon"></i></button>
                 </>
                 :
                 null

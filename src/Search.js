@@ -9,15 +9,12 @@ function Search({user, searchTerm, setSearchTerm, handleSearch}){
 
 
     return (
-        <div>
-            <h2 className="name">Welcome {user.name}</h2>
-
         <div className="search">
             <form id="search-form" className="ui input" onSubmit={handleSearch} >
                 <input id="search" className="ui input" required type="text" placeholder="Search..." value={searchTerm} onChange={handleChange}/>
+                
                 <input className="ui input" type="submit" value="Search"/>
             </form>
-        </div>
         </div>
     )
 }

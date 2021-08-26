@@ -32,7 +32,8 @@ function App() {
         setErrors(currentUser.errors)
       } else {
         setUser(currentUser)
-        setLoading(!loading)
+        // setLoading(true)
+        
       }
     })
   },[])
@@ -40,14 +41,27 @@ function App() {
 
 
 
-   if(!loading) {
-        return <h2>Loading... <i className="hourglass half icon"></i> </h2>
+  //  if(!loading) {
+  //       return (
+  //         <div className="ui segment">
+  //           <div className="ui active dimmer">
+  //             <br></br>
+  //             <br></br>
+  //             <div style={{color: 'black' }} className="ui big text loader">Loading...</div>
+  //           </div>
+  //           <p></p>
+  //           <p></p>
+  //         </div>
+  //     )
         
-      }
+  //     }
+  // if(!loading) return <h2>Loading... <i className="hourglass half icon"></i> </h2>
+  
+
 
  
 
-  if(!user) return <LogIn key={user} user={user} setUser={setUser} history={history}/>
+  if(!user) return <LogIn loading={loading} setLoading={setLoading} key={user} user={user} setUser={setUser} history={history}/>
 
   return (
     <div className="App">

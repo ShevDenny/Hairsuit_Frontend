@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import parse from 'html-react-parser'
 
 function Directions({salonInfo}){
     const [locationDirections, setLocationDirections] = useState([])
@@ -13,6 +14,15 @@ function Directions({salonInfo}){
     if(!locationDirections) {
         return directionsDisplay
     }
+
+
+
+    // const filteredSteps = directionsDisplay.filter(directions => directions)
+    // console.log(filteredSteps)
+
+
+    // const boo = "<b>booooo</b>"
+    // console.log(boo)
 
     // console.log(appointment)
    
@@ -61,7 +71,15 @@ function Directions({salonInfo}){
         null
         }          
             
-          {directionsDisplay}   
+          {/* {parse(directionsDisplay)} */}
+        {/* <div>
+              let dir = locationDirections.map((step) => {
+            console.log(step.html_instructions);
+            return <p>{step.html_instructions}</p>
+              })
+        </div> */}
+          
+
 
         </div>
 

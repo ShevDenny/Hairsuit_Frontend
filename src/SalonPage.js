@@ -6,7 +6,54 @@ import Directions from './Directions'
 import styled from 'styled-components'
 
 const SalonDisplay = styled.div` 
+#reviews {
+    width: 60%;
+    height: 200px;
+    overflow: scroll;
+    background-color: white;
+    // color: white;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 2%;
+}
 
+.header {
+    float: center;
+    font-size: 20px;
+}
+.salon-name {
+    padding: 2%;
+}
+.rev-div {
+    padding: 2%;
+    margin-top: 5%
+}
+.salon-img {
+    float: left;
+    padding:2%;
+    margin-left: 5%
+}
+#about {
+    padding: 2%;
+    margin: 5%;
+    height: 300px
+}
+#services {
+    margin-top: 15%;
+    margin-right: 40%;
+    margin-left: 35%;
+    cursor: pointer;
+}
+
+.apptform-div {
+    cursor: pointer;
+}
+
+#appt-btn {
+    width: 30%;
+    height: 30%;
+    font-size: 
+}
 
 
 `
@@ -15,6 +62,7 @@ const SalonDisplay = styled.div`
 
 function SalonPage({ setSalonReviews, salonReviews, updateReview, reviews, setReviews, salonInfo, appointments,setAppointments, history, user}) {
     const [showServices, setShowServices] = useState(false)
+    const [apptForm, setApptForm] = useState(false)
     // const [salonReviews, setSalonReviews] = useState([])
     console.log(salonInfo.id)
     // console.log(salonInfo)
@@ -50,41 +98,40 @@ function SalonPage({ setSalonReviews, salonReviews, updateReview, reviews, setRe
             return <Reviews salonReviews={salonReviews} setSalonReviews={setSalonReviews} key={review.id} review={review} setReviews={setReviews} user={user} salonInfo={salonInfo} />;
     })
 
-
-
    
 
 
     return (
-        <SalonDisplay>
-
-        
-
-      
+        <SalonDisplay>      
             
         <div className="salon-page">
-            <h1>{salonInfo.name}</h1>
-       
-            <div id="left" className="ui card">
-                <div className="ui segment">
+            <h1 className="salon-name" >{salonInfo.name}</h1>
+            <img className="salon-img" src={salonInfo.image} alt={salonInfo.name} width="450" height="550" />
+            <div id="about" className="">
+                <div className="">
                     <div className="header">About {salonInfo.name}</div>
-                    <br></br>
-                        <img className="ui small left floated image" src={salonInfo.image} alt={salonInfo.name} width="350" height="350" />
-                    
-                    
-                    <p>{salonInfo.description}</p>                
-                    
+                    <br></br>                    
+                    <p>{salonInfo.description}</p>               
                 </div>
             </div>
             
-            <div className="ui card">
+            <div className="apptform-div">
+                <button className="ui button" id="appt-btn" onClick={() => setApptForm(!apptForm)}>Book an Appointment</button>
+                {apptForm ?
+                <AppointmentForm user={user} history={history} salonInfo={salonInfo} appointments={appointments} setAppointments={setAppointments}/> 
+                :
+                null        
+                }
+
+            </div>          
+            <div id="services" className="ui card">
                 <div className="content">
-                    <div className="header" onClick={() => setShowServices(!showServices)}>Services</div>
+                    <div className="header" onClick={() => setShowServices(!showServices)}>Services & Pricing</div>
                     {showServices ?
                 
                     <div className="description">
                     <ul>
-                        <h2></h2>
+                        
                         {serviceList} 
                     </ul>              
                     </div>
@@ -95,22 +142,28 @@ function SalonPage({ setSalonReviews, salonReviews, updateReview, reviews, setRe
             </div> 
             
             
-            <div id="right" className="">
-                <div className="content">
-                    <div className="header">Salon Reviews</div>                
-                    <div className="description">
+
+            <div  className="rev-div">
+                <div className="header"><b>Customer Reviews</b></div>
+                <br></br>
+                <div  id="reviews" className="content">
+                                  
+                    <div  className="description">
                         {reviewList}
                     </div>
+                    <br></br>
+                    <br></br>
                     <ReviewForm updateReview={updateReview} reviews={reviews} setReviews={setReviews} salonInfo={salonInfo} key={user.id} user={user}/>
                 </div>
             </div>
-            <div className="directions-div">
-                <Directions salonInfo={salonInfo} />
-            </div>
+            <div className="addy">
+                <p>{salonInfo.location}</p>
 
-            <div className="apptform-div">
-            <AppointmentForm user={user} history={history} salonInfo={salonInfo} appointments={appointments} setAppointments={setAppointments}/>            
-            </div>           
+            </div>
+            {/* <div className="directions-div">
+                <Directions salonInfo={salonInfo} />
+            </div> */}
+
             
         </ div>
     </SalonDisplay>  

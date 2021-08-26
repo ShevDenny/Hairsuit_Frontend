@@ -1,17 +1,26 @@
 import React, {useState} from 'react'
 import SignUp from './SignUp'
+import styled from 'styled-components'
 // import AccountCircleIcon from '@material-ui/icons/AccountCircle'
+const LoginDiv = styled.div` 
+h1, h2 {
+  font-family: 'Ubuntu', sans-serif;
+}
 
-function LogIn({setUser, history, user}) {
+`
+
+function LogIn({setUser, history, loading, setLoading, user}) {
     const[formData, setFormData] = useState({
         username: '',
         password: ''
     })
     const[errors, setErrors] = useState([])
     const[signUp, setSignUp] = useState(false)
+   
 
     function handleSubmit(e){
         e.preventDefault()
+        // setLoading(true)
         const user = {
           user_name: formData.username,
           password: formData.password
@@ -33,6 +42,7 @@ function LogIn({setUser, history, user}) {
             const {user, token} = data;
             localStorage.setItem("token", token)
             setUser(user)
+            // setLoading(!loading)
             history.push('/home')
           }
         })
@@ -54,7 +64,8 @@ function LogIn({setUser, history, user}) {
             {!signUp ?
             <>
             <form id="login" className="" onSubmit={handleSubmit}>
-                <h2>Sign In </h2>
+                {/* <h1 className="login-header">Welcome to HairSuit</h1> */}
+                <h2 className="login-subheader">Sign In </h2>
 
                 <input 
                     type="text" 
