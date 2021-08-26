@@ -3,8 +3,24 @@ import SignUp from './SignUp'
 import styled from 'styled-components'
 // import AccountCircleIcon from '@material-ui/icons/AccountCircle'
 const LoginDiv = styled.div` 
-h1, h2 {
-  font-family: 'Ubuntu', sans-serif;
+.header {
+  font-family: 'Pacifico', cursive;
+
+}
+
+.title {
+  font-family: 'Courgette', cursive;
+  font-size: 60px;
+  color: #eff1abf8;
+  // top: 50px; 
+  margin-top: 1%;
+  margin-left: 2%;
+ 
+
+}
+.hairsuit {
+  background: black;
+  padding: 1%;
 }
 
 `
@@ -58,14 +74,17 @@ function LogIn({setUser, history, loading, setLoading, user}) {
      
 
     return (
-     
+     <LoginDiv>
 
         <div className="log-in">
+          <header className="hairsuit">
+            <h1 className="title" >HairSuit</h1>
+          </header>
             {!signUp ?
             <>
-            <form id="login" className="" onSubmit={handleSubmit}>
+            <form id="login" className="" onSubmit={handleSubmit} autocomplete="off">
                 {/* <h1 className="login-header">Welcome to HairSuit</h1> */}
-                <h2 className="login-subheader">Sign In </h2>
+                <h2 className="header">Log in</h2>
 
                 <input 
                     type="text" 
@@ -93,8 +112,13 @@ function LogIn({setUser, history, loading, setLoading, user}) {
             :
             <SignUp setUser={setUser} history={history}/>
             }
+        <div className="footer-div">
+            <p>Created By: Shevon Denny</p>
 
         </div>
+
+        </div>
+    </LoginDiv>
         
 
 

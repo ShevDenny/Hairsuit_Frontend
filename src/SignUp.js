@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 
 
+
 function SignUp({setUser, history}) {
     const[formData, setFormData] = useState({
         name: "",
@@ -56,9 +57,10 @@ function SignUp({setUser, history}) {
 
 
     return (
+        
         <div className="signup">
-            <form className="signup-form" onSubmit={handleSubmit}>
-                <h2> Join our community today </h2>
+            <form className="signup-form" onSubmit={handleSubmit} autocomplete="off">
+                <h2 className="signup-header" > Join our community! </h2>
 
                 <input 
                     type="text" 
@@ -93,6 +95,7 @@ function SignUp({setUser, history}) {
                 <a href="http://localhost:2000/">Already have an account?</a>
             </form>
         </div>
+       
     )
 }
 

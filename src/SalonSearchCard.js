@@ -17,6 +17,7 @@ const DisplaySalons = styled.div`
         float: left;
         margin-right: -90 px;
         margin-left: 70px;
+        cursor: pointer;
    
         
     }

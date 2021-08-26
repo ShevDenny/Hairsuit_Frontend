@@ -47,7 +47,7 @@ function AppointmentForm({appointments, setAppointments, salonInfo, history, use
 
             const json = await res.json();
             setAppointments([...appointments, json]);
-            // alert("Appointment booked!")
+            alert("Appointment booked!")
             history.push(`/my-appointments`)
         } else {
             const errors = await res.json();
@@ -64,7 +64,7 @@ function AppointmentForm({appointments, setAppointments, salonInfo, history, use
 
         <div className="appointment">            
            
-            <form className="" noValidate onSubmit={handleSubmit}>
+            <form className="" noValidate onSubmit={handleSubmit} autocomplete="off" >
                 
                 <TextField
                     id="date-picker"
@@ -100,7 +100,7 @@ function AppointmentForm({appointments, setAppointments, salonInfo, history, use
                     onChange={(e) => setTime(e.target.value)}
                 /> */}
 
-                <TextField id="select" label="Appointment Time" margin="normal" InputLabelProps={{ shrink: true, }} inputProps={{ step: 300, }} value={time} onChange={(e) => setTime(e.target.value)} select>
+                <TextField id="select" label="Appointment Time" margin="normal" InputLabelProps={{ shrink: true, }}  value={time} onChange={(e) => setTime(e.target.value)} select>
                     <MenuItem value="default" disabled>Select Time</MenuItem>
                     <MenuItem value="3:30pm">10:30am</MenuItem>
                     <MenuItem value="4:00pm">11:00am</MenuItem>
@@ -112,12 +112,12 @@ function AppointmentForm({appointments, setAppointments, salonInfo, history, use
                     <MenuItem value="7:00pm">2:00pm</MenuItem>
                     <MenuItem value="7:30pm">2:30pm</MenuItem>
                     <MenuItem value="8:00pm">3:00pm</MenuItem>
-                    <MenuItem value="9:30pm">3:30pm</MenuItem>
-                    <MenuItem value="10:00pm">4:00pm</MenuItem>
-                    <MenuItem value="11:30pm">4:30pm</MenuItem>
-                    <MenuItem value="12:00pm">5:00pm</MenuItem>
-                    <MenuItem value="12:30am">5:30pm</MenuItem>
-                    <MenuItem value="1:00am">6:00pm</MenuItem>
+                    <MenuItem value="8:30pm">3:30pm</MenuItem>
+                    <MenuItem value="9:00pm">4:00pm</MenuItem>
+                    <MenuItem value="9:30pm">4:30pm</MenuItem>
+                    <MenuItem value="10:00pm">5:00pm</MenuItem>
+                    <MenuItem value="10:30pm">5:30pm</MenuItem>
+                    <MenuItem value="11:00pm">6:00pm</MenuItem>
                 </TextField>
                 <TextField
                     id="desc"
@@ -131,8 +131,9 @@ function AppointmentForm({appointments, setAppointments, salonInfo, history, use
                     }}
                     value={description} 
                     onChange={(e) => setDescription(e.target.value)}
+                    
                 />
-                <TextField type="submit" value="Book" margin="normal" />
+                <TextField type="submit" value="Book Now" margin="normal" />
 
             </form>
 

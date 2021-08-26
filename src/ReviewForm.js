@@ -120,7 +120,7 @@ function ReviewForm({salonInfo, user, updateReview, reviews}) {
         <br></br>
         <br></br>
         <br></br>
-            <form className="ui form" onSubmit={leaveReview}>
+            <form className="ui form" onSubmit={leaveReview} autocomplete="off">
                 <input 
                     type="text" 
                     placeholder="Share your experience with us!"

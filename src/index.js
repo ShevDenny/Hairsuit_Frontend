@@ -27,6 +27,7 @@ const GlobalStyle = createGlobalStyle`
     display: block;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 15%;
     width: 40%;
     padding: 8%;
   }
@@ -39,6 +40,12 @@ const GlobalStyle = createGlobalStyle`
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+  }
+  .signup-header {
+    font-family: 'Pacifico', cursive;
+    text-align: center;
+    float: center;
+
   }
 
   .user-btn {

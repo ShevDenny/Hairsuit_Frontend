@@ -18,6 +18,13 @@ const ReviewDiv = styled.div`
         color: gray;
     }
 
+    .reviews-div {
+        margin-top: 5%;
+    }
+    .review {
+        text-align: center;
+    }
+
 
 `
 
@@ -49,9 +56,9 @@ function Reviews({review, salonReviews, setSalonReviews, user, salonInfo }) {
     return (
         <ReviewDiv>
 
-            <div classname="reviews-div">
-                <br></br>
-                <br></br>
+            <div className="reviews-div">
+                
+   
                 <p id="user-name">{review.user.name} says...</p>
                 <img className="review-image" src={`http://localhost:3000/${review.review_photo}`} width="125" height= "125" />
                 <p id="review" >{review.review.comment}</p>
@@ -65,6 +72,10 @@ function Reviews({review, salonReviews, setSalonReviews, user, salonInfo }) {
                 :
                 null
                 }
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
             
             </div>
         
