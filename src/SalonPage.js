@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react'
 import AppointmentForm from './AppointmentForm'
 import ReviewForm from './ReviewForm'
 import Reviews from './Reviews'
-import Directions from './Directions'
 import styled from 'styled-components'
 
 const SalonDisplay = styled.div` 
@@ -63,9 +62,7 @@ const SalonDisplay = styled.div`
 function SalonPage({ setSalonReviews, salonReviews, updateReview, reviews, setReviews, salonInfo, appointments,setAppointments, history, user}) {
     const [showServices, setShowServices] = useState(false)
     const [apptForm, setApptForm] = useState(false)
-    // const [salonReviews, setSalonReviews] = useState([])
-    console.log(salonInfo.id)
-    // console.log(salonInfo)
+
     useEffect(() => {
         const token = localStorage.getItem('token')
         fetch(`http://localhost:3000/reviews`, { 
@@ -80,9 +77,7 @@ function SalonPage({ setSalonReviews, salonReviews, updateReview, reviews, setRe
         })
     },[])
 
-    
 
-    // setSalonReviews(salonRevs)
     
     
         if(salonInfo.services === undefined){
@@ -160,10 +155,6 @@ function SalonPage({ setSalonReviews, salonReviews, updateReview, reviews, setRe
                 <p>{salonInfo.location}</p>
 
             </div>
-            {/* <div className="directions-div">
-                <Directions salonInfo={salonInfo} />
-            </div> */}
-
             
         </ div>
     </SalonDisplay>  

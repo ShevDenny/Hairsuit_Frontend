@@ -83,7 +83,7 @@ function LogIn({setUser, history, loading, setLoading, user}) {
             {!signUp ?
             <>
             <form id="login" className="" onSubmit={handleSubmit} autocomplete="off">
-                {/* <h1 className="login-header">Welcome to HairSuit</h1> */}
+                
                 <h2 className="header">Log in</h2>
 
                 <input 

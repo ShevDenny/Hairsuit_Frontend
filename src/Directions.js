@@ -17,14 +17,8 @@ function Directions({salonInfo}){
 
 
 
-    // const filteredSteps = directionsDisplay.filter(directions => directions)
-    // console.log(filteredSteps)
 
 
-    // const boo = "<b>booooo</b>"
-    // console.log(boo)
-
-    // console.log(appointment)
    
 
     function getDirections(e){
@@ -71,13 +65,7 @@ function Directions({salonInfo}){
         null
         }          
             
-          {/* {parse(directionsDisplay)} */}
-        {/* <div>
-              let dir = locationDirections.map((step) => {
-            console.log(step.html_instructions);
-            return <p>{step.html_instructions}</p>
-              })
-        </div> */}
+
           
 
 

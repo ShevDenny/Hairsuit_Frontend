@@ -44,11 +44,7 @@ const NavDiv = styled.div`
     margin-top: 8%;
     margin-left: -220px;
     font-family: 'Besley', serif;
-    // // padding: 1%
-    // // margin: 5%;
-    // // transition-duration: 0.4s;
-    // // vertical-align: middle;
-    // // font-family: 'Satisfy', cursive;
+
   }
   .link-btn {
     font-family: 'Alegreya', serif;

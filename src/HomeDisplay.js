@@ -36,13 +36,13 @@ function HomeDisplay() {
             <div className="image-container">
               <img src={fadeImages[0]} width="450" height="500" duration="1000" />
             </div>
-            {/* <h2>First Slide</h2> */}
+          
           </div>
           <div className="each-fade">
             <div className="image-container">
               <img src={fadeImages[1]} width="450" height="500" duration="1000"/>
             </div>
-            {/* <h2>Second Slide</h2> */}
+          
           </div>
           <div className="each-fade">
             <div className="image-container">
@@ -56,36 +56,26 @@ function HomeDisplay() {
             </div>
         
           </div>
-          {/* <div className="each-fade">
-            <div className="image-container">
-              <img src={fadeImages[4]} width="450" height="500" duration="1000"/>
-            </div>
-            {/* <h2>Third Slide</h2> */}
-          {/* </div> */} 
+       
           <div className="each-fade">
             <div className="image-container">
               <img src={fadeImages[5]} width="450" height="500" duration="1000"/>
             </div>
-            {/* <h2>Third Slide</h2> */}
+      
           </div>
           <div className="each-fade">
             <div className="image-container">
               <img src={fadeImages[6]} width="450" height="500" duration="1000"/>
             </div>
-            {/* <h2>Third Slide</h2> */}
+           
           </div>
           <div className="each-fade">
             <div className="image-container">
               <img src={fadeImages[7]} width="450" height="500" duration="1000"/>
             </div>
-            {/* <h2>Third Slide</h2> */}
+           
           </div>
-          {/* <div className="each-fade">
-            <div className="image-container">
-              <img src={fadeImages[8]} width="450" height="500" duration="1000"/>
-            </div>
-            {/* <h2>Third Slide</h2> */}
-          {/* </div> */} 
+     
         </Fade>
       </div>
     </HomeDis>

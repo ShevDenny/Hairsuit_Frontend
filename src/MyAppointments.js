@@ -11,7 +11,7 @@ function MyAppointments({appointments, setAppointments, user}) {
 
    console.log(sortedAppts)
 
-//    console.log(today)
+
    const filteredAppts = appointments.filter(appt => appt.date < today)
 
 

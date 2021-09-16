@@ -3,14 +3,7 @@ import dateFormat from 'dateformat';
 import moment from 'moment';
 import styled from 'styled-components'
 
-const Appt = styled.div` 
-    .delete-btn {
 
-    }
-
-
-
-`
 
 
 
@@ -41,7 +34,7 @@ export default function  AppointmentCard({today, user, appointment, appointments
       
     }
  
-    // console.log(moment(appointment.start_time).format("LT"))
+   
 
 
     return (

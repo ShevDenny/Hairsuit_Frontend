@@ -41,23 +41,6 @@ function App() {
 
 
 
-  //  if(!loading) {
-  //       return (
-  //         <div className="ui segment">
-  //           <div className="ui active dimmer">
-  //             <br></br>
-  //             <br></br>
-  //             <div style={{color: 'black' }} className="ui big text loader">Loading...</div>
-  //           </div>
-  //           <p></p>
-  //           <p></p>
-  //         </div>
-  //     )
-        
-  //     }
-  // if(!loading) return <h2>Loading... <i className="hourglass half icon"></i> </h2>
-  
-
 
  
 

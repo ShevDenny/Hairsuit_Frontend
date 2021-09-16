@@ -5,7 +5,7 @@ import SalonDisplay from './SalonDisplay'
 import MyAppointments from './MyAppointments'
 import SalonPage from './SalonPage'
 import NavBar from './NavBar'
-import LogIn from './LogIn'
+
 
 
 function MainContent({user, setUser, history}) {
@@ -27,7 +27,7 @@ function MainContent({user, setUser, history}) {
         .then(res => res.json())
         .then(salonData => setSalons(salonData))
     },[])
-    // console.log(salons)
+
 
     
     
@@ -48,7 +48,7 @@ function MainContent({user, setUser, history}) {
         })
     },[])
     
-    // console.log(appointments)  
+
     
     useEffect(() => {
         const token = localStorage.getItem('token')
@@ -58,7 +58,6 @@ function MainContent({user, setUser, history}) {
             },
         })
         .then(res => res.json())
-        // .then(console.log)
         .then(reviewData => setReviews(reviewData))
 
     },[])
@@ -66,7 +65,6 @@ function MainContent({user, setUser, history}) {
     console.log(reviews)
 
     const updateReview = (result) => {
-        // setReviews([...reviews, result]) 
         setSalonReviews([...salonReviews, result]) 
     }
     
@@ -83,8 +81,7 @@ function MainContent({user, setUser, history}) {
         ||
         (salon.specialize_in.toLowerCase().includes(searchTerm.toLowerCase()))
     })
-    // console.log(filteredSalons)
-    // console.log(salonInfo)
+ 
    
     
     return (
@@ -104,9 +101,6 @@ function MainContent({user, setUser, history}) {
                 <Route path="/salon-info">
                     <SalonPage  setSalonReviews={setSalonReviews} salonReviews={salonReviews} updateReview={updateReview} setReviews={setReviews} reviews={reviews} user={user} history={history} salonInfo={salonInfo} appointments={appointments} setAppointments={setAppointments} />
                 </Route>
-                {/* <Route path="/login">
-                    <LogIn key={user} user={user} setUser={setUser} history={history}/>
-                </Route>               */}
             </Switch>        
         </>
     )

@@ -1,5 +1,5 @@
 
-function Search({user, searchTerm, setSearchTerm, handleSearch}){
+function Search({searchTerm, setSearchTerm, handleSearch}){
  
 
     function handleChange(e){

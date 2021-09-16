@@ -1,4 +1,3 @@
-import React, {useEffect, useState} from 'react';
 import styled from 'styled-components'
 
 const ReviewDiv = styled.div`
@@ -63,8 +62,6 @@ function Reviews({review, salonReviews, setSalonReviews, user, salonInfo }) {
                 <img className="review-image" src={`http://localhost:3000/${review.review_photo}`} width="125" height= "125" />
                 <p id="review" >{review.review.comment}</p>
                 
-                
-                {/* <p id="rating" >{review.rating}</p> */}
                 { review.user.id === user.id ?
                 <>
                 <button className="delete" onClick={removeReview} ><i class="trash alternate outline icon"></i></button>

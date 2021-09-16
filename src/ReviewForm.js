@@ -129,16 +129,10 @@ function ReviewForm({salonInfo, user, updateReview, reviews}) {
                     onChange={handleChange}
                 />
                 
-                {/* <input 
-                    type="number"
-                    // className="ui star rating"
-                    name="rating" 
-                    value={rating}
-                    onChange={handleChange}
-                /> */}
+           
         
                 <input
-                    // className="ui dropdown" 
+         
                     type="file"
                     name="review_photo"
                     onChange={handleChange}
@@ -147,8 +141,6 @@ function ReviewForm({salonInfo, user, updateReview, reviews}) {
                 <button className="ui button" type="submit"> Leave a Review</button>
                
                 {errors ? errors.map(error => <p>{error}</p>) : null}
-                    {/* insert photo upload  */}
-                    {/* insert rating from material ui or semantics*/}
             </form> 
               
         </div>
