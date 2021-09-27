@@ -42,9 +42,9 @@ function MainContent({user, setUser, history}) {
         .then(res => res.json())
         .then(appointmentData => {
             console.log(appointmentData)
-            let userAppt = appointmentData.filter(appt => appt.user.id === user.id)
-            console.log(userAppt)
-            setAppointments(userAppt)
+            // let userAppt = appointmentData.filter(appt => appt.user.id === user.id)
+            // console.log(userAppt)
+            // setAppointments(userAppt)
         })
     },[])
     

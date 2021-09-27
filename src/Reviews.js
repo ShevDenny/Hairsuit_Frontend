@@ -27,11 +27,9 @@ const ReviewDiv = styled.div`
 
 `
 
-function Reviews({review, salonReviews, setSalonReviews, user, salonInfo }) {
+function Reviews({review, salonReviews, setSalonReviews, user}) {
 
-    console.log(salonReviews)
 
-    console.log(review)
    
   
 

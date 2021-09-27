@@ -6,7 +6,6 @@ const NavDiv = styled.div`
     font-family: 'Courgette', cursive;
     font-size: 60px;
     color: #eff1abf8;
-    // color: rgba(128, 128, 128, 0.411);
     top: 50px;
     float: left;
     margin-top: 1%;
@@ -17,12 +16,8 @@ const NavDiv = styled.div`
 
   .nav_bar {
     overflow: hidden;
-    // padding-top: 1%;
-    // background: white;
-    // height: 50px
     width: 100%;
     position: relative; 
-    // bottom: 0;
     z-index: 1000;
     display: block;
     margin-top: 1%;   
@@ -37,9 +32,7 @@ const NavDiv = styled.div`
 
 .name {
     color: white;
-    // text-align: right;
     float: left;
-    // text-decoration: none;
     font-size: 12px;
     margin-top: 8%;
     margin-left: -220px;
