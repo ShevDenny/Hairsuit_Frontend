@@ -1,5 +1,6 @@
-import React, {useState} from 'react'
-import parse from 'html-react-parser'
+import React, {useState} from 'react';
+import parse from 'html-react-parser';
+import MapContainer from './MapContainer';
 
 function Directions({salonInfo}){
     const [locationDirections, setLocationDirections] = useState([])
@@ -63,7 +64,8 @@ function Directions({salonInfo}){
         </form>
         :
         null
-        }          
+        }
+        <MapContainer />          
             
 
           

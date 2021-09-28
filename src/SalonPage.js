@@ -3,6 +3,7 @@ import AppointmentForm from './AppointmentForm'
 import ReviewForm from './ReviewForm'
 import Reviews from './Reviews'
 import styled from 'styled-components'
+import Directions from './Directions'
 
 const SalonDisplay = styled.div` 
 #reviews {
@@ -153,6 +154,7 @@ function SalonPage({ setSalonReviews, salonReviews, updateReview, reviews, setRe
             </div>
             <div className="addy">
                 <p>{salonInfo.location}</p>
+                <Directions />
 
             </div>
             
