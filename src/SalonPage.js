@@ -26,7 +26,8 @@ const SalonDisplay = styled.div`
 }
 .rev-div {
     padding: 2%;
-    margin-top: 5%
+    margin-top: 5%;
+    margin-bottom: 5%;
 }
 .salon-img {
     float: left;
@@ -152,11 +153,14 @@ function SalonPage({ setSalonReviews, salonReviews, updateReview, reviews, setRe
                     <ReviewForm updateReview={updateReview} reviews={reviews} setReviews={setReviews} salonInfo={salonInfo} key={user.id} user={user}/>
                 </div>
             </div>
-            <div className="addy">
-                <p>{salonInfo.location}</p>
+            <br></br>
+            <br></br>
+            <br></br>
+            {/* <div className="addy">
+                <p>{salonInfo.location}</p> */}
                 {/* <Directions /> */}
 
-            </div>
+            {/* </div> */}
             
         </ div>
     </SalonDisplay>  

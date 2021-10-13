@@ -25,7 +25,7 @@ const LoginDiv = styled.div`
 
 `
 
-function LogIn({setUser, history, loading, setLoading, user}) {
+function LogIn({setUser, history}) {
     const[formData, setFormData] = useState({
         username: '',
         password: ''

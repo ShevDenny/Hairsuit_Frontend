@@ -62,7 +62,6 @@ function MainContent({user, setUser, history}) {
 
     },[])
 
-    console.log(reviews)
 
     const updateReview = (result) => {
         setSalonReviews([...salonReviews, result]) 

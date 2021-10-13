@@ -1,6 +1,6 @@
 import React from 'react';
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
-// ​
+ ​
 function MapContainer() {
   
   const mapStyles = {        
@@ -22,5 +22,5 @@ function MapContainer() {
      </LoadScript>
   )
 }
-// ​
+ ​
 export default MapContainer;
