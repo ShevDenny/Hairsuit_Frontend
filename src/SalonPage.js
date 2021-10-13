@@ -154,7 +154,7 @@ function SalonPage({ setSalonReviews, salonReviews, updateReview, reviews, setRe
             </div>
             <div className="addy">
                 <p>{salonInfo.location}</p>
-                <Directions />
+                {/* <Directions /> */}
 
             </div>
             

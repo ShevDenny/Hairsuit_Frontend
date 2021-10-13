@@ -9,6 +9,10 @@ const HomeDis = styled.div`
   .image-container img {
     duration: 1000;
   }
+  
+  .each-fade {
+    margin-bottom: 5%;
+  }
 
 `
 

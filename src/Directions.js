@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import parse from 'html-react-parser';
 import MapContainer from './MapContainer';
 
 function Directions({salonInfo}){
@@ -15,10 +14,6 @@ function Directions({salonInfo}){
     if(!locationDirections) {
         return directionsDisplay
     }
-
-
-
-
 
    
 

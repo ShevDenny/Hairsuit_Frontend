@@ -13,7 +13,7 @@ function MapContainer() {
   
   return (
      <LoadScript
-       googleMapsApiKey='AIzaSyAUmKumq1W9kZymyd7-rT5FCh409ZwzG7U'>
+       googleMapsApiKey=''>
         <GoogleMap
           mapContainerStyle={mapStyles}
           zoom={13}

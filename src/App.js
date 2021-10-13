@@ -7,11 +7,6 @@ import LogIn from './LogIn'
 import Footer from './Footer'
 
 
-
-
-
-
-
 function App() {
   const[user, setUser] = useState(null)
   const[errors, setErrors] = useState(null)

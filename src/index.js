@@ -86,6 +86,8 @@ const GlobalStyle = createGlobalStyle`
 
 
 .footer-div{
+  position: fixed;
+  bottom: 0;
   display: flex; 
   justify-content: space-between; 
   // padding: 4rem 8rem;
